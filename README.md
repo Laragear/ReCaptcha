@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/darkghosthunter/captchavel.svg?style=flat-square)](https://packagist.org/packages/darkghosthunter/captchavel) [![License](https://poser.pugx.org/darkghosthunter/captchavel/license)](https://packagist.org/packages/darkghosthunter/larapoke) ![](https://img.shields.io/packagist/php-v/darkghosthunter/captchavel.svg) ![](https://github.com/DarkGhostHunter/Captchavel/workflows/PHP%20Composer/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/DarkGhostHunter/Captchavel/badge.svg?branch=master)](https://coveralls.io/github/DarkGhostHunter/Captchavel?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/9571f57106069b5f3aac/maintainability)](https://codeclimate.com/github/DarkGhostHunter/Captchavel/maintainability) [![Laravel Octane Compatible](https://img.shields.io/badge/Laravel%20Octane-Compatible-success?style=flat&logo=laravel)](https://github.com/laravel/octane)
 
-# Captcha
+# ReCaptcha
 
 Integrate reCAPTCHA into your Laravel app better than the Big G itself!
 
@@ -438,6 +438,20 @@ $this->post('comment', [
     'body' => 'Comment made by robot.',
 ])->assertSee('Your comment will be reviewed before publishing.');
 ```
+
+## PhpStorm metadata
+
+For PhpStorm users, there is a metadata file to aid in macro autocompletion for this package. You can publish it using the `phpstorm` tag:
+
+```shell
+php artisan vendor:publish --provider="Laragear\ReCaptcha\ReCaptchaServiceProvider" --tag="phpstorm"
+```
+
+Beware of the caveats, as this is a very _green_ implementation by JetBrains.
+
+- Go to declaration doesn't work, as it will point to the meta file and not the original file.
+- Extended class constructor becomes are empty.
+- May be reported as "duplicate declaration".
 
 ## Security
 

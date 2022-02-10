@@ -14,8 +14,11 @@ use Illuminate\View\Compilers\BladeCompiler;
  */
 class ReCaptchaServiceProvider extends ServiceProvider
 {
+    // These constants point to publishable files/directories.
     public const CONFIG = __DIR__.'/../config/recaptcha.php';
     public const LANG = __DIR__.'/../lang';
+    public const PHPSTORM = __DIR__.'/../.phpstorm.meta.php';
+
     /**
      * Register the application services.
      *
@@ -42,6 +45,9 @@ class ReCaptchaServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([static::CONFIG => $this->app->configPath('recaptcha.php')], 'config');
             $this->publishes([static::LANG => $this->app->langPath('vendor/recaptcha')], 'lang');
+            $this->publishes(
+                [static::PHPSTORM => $this->app->basePath('.phpstorm.meta.php/laragear-recaptcha.php')], 'phpstorm'
+            );
         }
 
         $router->aliasMiddleware(Http\Middleware\VerifyReCaptchaV2::SIGNATURE, Http\Middleware\VerifyReCaptchaV2::class);

@@ -41,4 +41,12 @@ class ServiceProviderTest extends TestCase
             ServiceProvider::pathsToPublish(ReCaptchaServiceProvider::class, 'lang')
         );
     }
+
+    public function test_publishes_phpstorm_meta(): void
+    {
+        static::assertSame(
+            [ReCaptchaServiceProvider::PHPSTORM => $this->app->basePath('.phpstorm.meta.php/laragear-recaptcha.php')],
+            ServiceProvider::pathsToPublish(ReCaptchaServiceProvider::class, 'phpstorm')
+        );
+    }
 }
