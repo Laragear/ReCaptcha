@@ -477,7 +477,7 @@ $this->post('comment', [
 ReCaptcha::fakeScore(0.4);
 
 $this->post('comment', [
-    'body' => 'Comment made by robot.',
+    'body' => 'Comment made by something.',
 ])->assertSee('Your comment will be reviewed before publishing.');
 
 // A robot shouldn't be able to comment.
