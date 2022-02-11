@@ -26,7 +26,7 @@ return [
     | servers in local development. To do this, simply enable the environment
     | variable and then issue as a checkbox parameter is_robot to any form.
     |
-    | For v2 middleware, faking means bypassing checks.
+    | For v2 middleware, faking means bypassing checks, like it were disabled.
     |
     */
 
