@@ -379,13 +379,13 @@ Here is the full array of [reCAPTCHA credentials](#set-up) to use depending on t
 
 ## Developing with ReCaptcha v2
 
-On local development, let the default [testing keys](https://developers.google.com/recaptcha/docs/faq#id-like-to-run-automated-tests-with-recaptcha.-what-should-i-do) be used. These are meant to be used on development, so in production you can easily change them for real keys.
+On local development, let the default [testing keys](https://developers.google.com/recaptcha/docs/faq#id-like-to-run-automated-tests-with-recaptcha.-what-should-i-do) be used. These are meant to be used on local development, so in production you can easily change them for real keys.
 
 On unit testing, the middleware will detect the environment and skip the mandatory challenge check. There is no need to [disable ReCaptcha](#enable-switch).
 
-## Testing with ReCaptcha v3 (score)
+## Developing with ReCaptcha v3 (score)
 
-On local development and unit testing, the middleware and will automatically create human responses. There is no need to [disable ReCaptcha](#enable-switch), but [enabling faking](#faking-recaptcha-scores) is mandatory to enable faking robot responses using `is_robot` on requests.
+On local development and unit testing, the middleware and will automatically create human responses. There is no need to [disable ReCaptcha](#enable-switch), but [enabling faking](#faking-recaptcha-scores) is mandatory to enable faking robot responses using `is_robot` on live requests.
 
 Inside your tests, you can fake a response made by a human or robot by simply using the `fakeHuman()` and `fakeRobot()` methods, which will score `1.0` or `0.0` respectively for all subsequent requests.
 
@@ -421,18 +421,25 @@ Alternatively, `fakeScore()` method will fake responses with any score you set.
 use Laragear\ReCaptcha\Facades\ReCaptcha;
 
 // A human comment should be public.
-ReCaptcha::fakeScore(0.7);
+ReCaptcha::fakeScore(0.8);
 
 $this->post('comment', [
     'body' => 'This comment was made by a human',
 ])->assertSee('Your comment has been posted!');
 
-// A robot should have its comment moderated.
+// Moderate a post if there is no clear separation.
 ReCaptcha::fakeScore(0.4);
 
 $this->post('comment', [
     'body' => 'Comment made by robot.',
 ])->assertSee('Your comment will be reviewed before publishing.');
+
+// A robot shouldn't be able to comment.
+ReCaptcha::fakeScore(0.2);
+
+$this->post('comment', [
+    'body' => 'Comment made by robot.',
+])->assertSee('Robots are not welcomed here! Go away!');
 ```
 
 ## PhpStorm metadata
