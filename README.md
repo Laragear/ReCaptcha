@@ -372,7 +372,7 @@ RECAPTCHA_FAKE=true
 
 If ReCaptcha is [enabled](#enable-switch), setting this to true will allow your application to [fake v3-score responses from reCAPTCHA servers](#faking-recaptcha-scores). For v2 challenges, setting this to `true` bypasses the challenge verification.
 
-You should enable it for [running unit tests](#testing-with-recaptcha-v3-score).
+You should enable it for [running unit tests](#developing-with-recaptcha-v3-score).
 
 > **Warning** - Remember to disable faking on production. Not doing so will fake all score challenges as human, not requiring the challenge token.
 
