@@ -1,8 +1,14 @@
 # ReCaptcha
 
-Integrate reCAPTCHA into your Laravel app better than the Big G itself!
+Integrate reCAPTCHA using **async HTTP/2**, making your app **fast** with a few lines.
 
-It uses your Laravel HTTP Client **async HTTP/2**, making your app **fast**. You only need a couple of lines to integrate.
+```php
+use Illuminate\Support\Facades\Route;
+
+Route::post('login', function () {
+    // ...
+})->middleware('recaptcha:checkbox');
+```
 
 ## Requirements
 
