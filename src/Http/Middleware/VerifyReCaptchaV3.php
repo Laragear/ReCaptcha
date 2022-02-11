@@ -12,14 +12,15 @@ use function app;
 
 class VerifyReCaptchaV3
 {
-    use VerificationHelpers;
+    use VerifyHelpers;
+    use ChecksGuards;
 
     /**
-     * The signature of the middleware.
+     * The alias of the middleware.
      *
      * @var string
      */
-    public const SIGNATURE = 'recaptcha.score';
+    public const ALIAS = 'recaptcha.score';
 
     /**
      * Create a new middleware instance.

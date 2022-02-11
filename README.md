@@ -245,6 +245,50 @@ This environment variable allows to fake a robot responses by filling the `is_ro
 </form>
 ```
 
+## Confirmation middleware
+
+ReCaptcha comes with a handy middleware to confirm with a simple reCAPTCHA Checkbox challenge, much like the [password confirmation](https://laravel.com/docs/authentication#password-confirmation-protecting-routes) middleware included in Laravel.
+
+First, set the route to protect using the `recaptcha.confirm` middleware.
+
+```php
+use Illuminate\Support\Facades\Route;
+
+Route::get('/settings', function () {
+    // ...
+})->middleware('recaptcha.confirm');
+
+Route::post('/settings', function () {
+    // ...
+})->middleware('recaptcha.confirm');
+```
+
+Once done, ensure you have also a `recaptcha.confirm` route to receive the redirected user, and one to receive the challenge at the same path (as the view `POST` request does). ReCaptcha comes with a controller and a basic view that you can use out of the box:
+
+```php
+use Illuminate\Support\Facades\Route;
+use Laragear\ReCaptcha\Http\Controllers\ConfirmationController;
+
+Route::get('recaptcha', [ConfirmationController::class, 'show'])
+    ->name('recaptcha.confirm');
+
+Route::post('recaptcha', [ConfirmationController::class, 'confirm'])
+```
+
+When the user tries to enter the route, it will be redirected to the view asking to resolve a reCAPTCHA challenge. Once done, it will be redirected to the intended URL.  
+
+The middleware it's compatible with [remembering challenges](#remember), and will use the default amount of time to not ask again if remembering only when it's enabled globally, otherwise it will be asked to confirm every time.
+
+You can configure the route name and the guards to bypass the confirmation if the user is authenticated after the first argument. 
+
+```php
+use Illuminate\Support\Facades\Route;
+
+Route::get('/settings', function () {
+    // ...
+})->middleware('recaptcha.confirm:my-custom-route,web,admin');
+```
+
 ## Frontend integration
 
 [Check the official reCAPTCHA documentation](https://developers.google.com/recaptcha/intro) to integrate the reCAPTCHA script in your frontend, or inside your Android application.

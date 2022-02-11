@@ -108,10 +108,10 @@ class ReCaptcha
     /**
      * Checking for a "remember" on this route.
      *
-     * @param  int|string|null  $minutes
+     * @param  int|null  $minutes
      * @return static
      */
-    public function remember(int|string $minutes = null): static
+    public function remember(int $minutes = null): static
     {
         $this->ensureVersionIsCorrect(true);
 
@@ -127,7 +127,11 @@ class ReCaptcha
      */
     public function rememberForever(): static
     {
-        return $this->remember('inf');
+        $this->ensureVersionIsCorrect(true);
+
+        $this->remember = 'inf';
+
+        return $this;
     }
 
     /**
@@ -228,8 +232,8 @@ class ReCaptcha
     {
         return Collection::make(
             $this->version === BaseReCaptcha::SCORE
-                ? [VerifyReCaptchaV3::SIGNATURE, $this->threshold, $this->action]
-                : [VerifyReCaptchaV2::SIGNATURE, $this->version, $this->remember]
+                ? [VerifyReCaptchaV3::ALIAS, $this->threshold, $this->action]
+                : [VerifyReCaptchaV2::ALIAS, $this->version, $this->remember]
         )->push($this->input, ...$this->guards);
     }
 }

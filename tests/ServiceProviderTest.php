@@ -2,7 +2,11 @@
 
 namespace Tests;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
+use Laragear\ReCaptcha\Http\Middleware\ConfirmReCaptcha;
+use Laragear\ReCaptcha\Http\Middleware\VerifyReCaptchaV2;
+use Laragear\ReCaptcha\Http\Middleware\VerifyReCaptchaV3;
 use Laragear\ReCaptcha\ReCaptcha;
 use Laragear\ReCaptcha\ReCaptchaServiceProvider;
 
@@ -19,6 +23,11 @@ class ServiceProviderTest extends TestCase
     public function test_loads_translations(): void
     {
         static::assertArrayHasKey('recaptcha', $this->app->make('translator')->getLoader()->namespaces());
+    }
+
+    public function test_load_views(): void
+    {
+        static::assertArrayHasKey('recaptcha', $this->app->make('view')->getFinder()->getHints());
     }
 
     public function test_registers_recaptcha(): void
@@ -42,11 +51,39 @@ class ServiceProviderTest extends TestCase
         );
     }
 
+    public function test_publishes_views(): void
+    {
+        static::assertSame(
+            [ReCaptchaServiceProvider::VIEWS => $this->app->viewPath('vendor/recaptcha')],
+            ServiceProvider::pathsToPublish(ReCaptchaServiceProvider::class, 'views')
+        );
+    }
+
     public function test_publishes_phpstorm_meta(): void
     {
         static::assertSame(
             [ReCaptchaServiceProvider::PHPSTORM => $this->app->basePath('.phpstorm.meta.php/laragear-recaptcha.php')],
             ServiceProvider::pathsToPublish(ReCaptchaServiceProvider::class, 'phpstorm')
         );
+    }
+
+    public function test_publishes_middleware(): void
+    {
+        $middleware = $this->app->make('router')->getMiddleware();
+
+        static::assertSame(VerifyReCaptchaV2::class, $middleware[VerifyReCaptchaV2::ALIAS]);
+        static::assertSame(VerifyReCaptchaV3::class, $middleware[VerifyReCaptchaV3::ALIAS]);
+        static::assertSame(ConfirmReCaptcha::class, $middleware[ConfirmReCaptcha::ALIAS]);
+    }
+
+    public function test_registers_macros(): void
+    {
+        static::assertTrue(Request::hasMacro('isRobot'));
+        static::assertTrue(Request::hasMacro('isHuman'));
+    }
+
+    public function test_registers_blade_directive(): void
+    {
+        static::assertArrayHasKey('robot', $this->app->make('blade.compiler')->getCustomDirectives());
     }
 }

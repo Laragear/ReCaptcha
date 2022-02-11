@@ -8,7 +8,6 @@ use Laragear\ReCaptcha\Facades\ReCaptcha as ReCaptchaFacade;
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
 use Laragear\ReCaptcha\ReCaptcha;
 use function app;
-use function auth;
 use function back;
 use function strtolower;
 use function trans;
@@ -16,7 +15,7 @@ use function trans;
 /**
  * @internal
  */
-trait VerificationHelpers
+trait VerifyHelpers
 {
     /**
      * Normalize the input name.
@@ -49,15 +48,6 @@ trait VerificationHelpers
         return app()->runningUnitTests();
     }
 
-    /**
-     * Check if the application is nor running under unit testing.
-     *
-     * @return bool
-     */
-    protected function isNotTesting(): bool
-    {
-        return ! $this->isTesting();
-    }
 
     /**
      * Check if the reCAPTCHA services should be faked.
@@ -67,70 +57,6 @@ trait VerificationHelpers
     protected function isFaking(): bool
     {
         return $this->config->get('recaptcha.fake');
-    }
-
-    /**
-     * Check if the reCAPTCHA challenge remembering is enabled.
-     *
-     * @return bool
-     */
-    protected function shouldRemember(): bool
-    {
-        return $this->config->get('recaptcha.remember.enabled');
-    }
-
-    /**
-     * Return the remember key.
-     *
-     * @return string
-     */
-    protected function rememberKey(): string
-    {
-        return $this->config->get('recaptcha.remember.key');
-    }
-
-    /**
-     * Return the minutes time to remember the challenge.
-     *
-     * @return int|float
-     */
-    protected function rememberMinutes(): int|float
-    {
-        return $this->config->get('recaptcha.remember.minutes');
-    }
-
-    /**
-     * Checks if the user is not authenticated on the given guards.
-     *
-     * @param  array  $guards
-     * @return bool
-     */
-    protected function isGuest(array $guards): bool
-    {
-        $auth = auth();
-
-        if ($guards === ['null']) {
-            $guards = [null];
-        }
-
-        foreach ($guards as $guard) {
-            if ($auth->guard($guard)->check()) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    /**
-     * Checks if the user is authenticated on the given guards.
-     *
-     * @param  array  $guards
-     * @return bool
-     */
-    protected function isAuth(array $guards): bool
-    {
-        return !$this->isGuest($guards);
     }
 
     /**

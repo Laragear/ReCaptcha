@@ -14,14 +14,16 @@ use const INF;
 
 class VerifyReCaptchaV2
 {
-    use VerificationHelpers;
+    use VerifyHelpers;
+    use ChecksRemember;
+    use ChecksGuards;
 
     /**
-     * The signature of the middleware.
+     * The alias of the middleware.
      *
      * @var string
      */
-    public const SIGNATURE = 'recaptcha';
+    public const ALIAS = 'recaptcha';
 
     /**
      * Create a new middleware instance.
@@ -53,18 +55,12 @@ class VerifyReCaptchaV2
         string $input = ReCaptcha::INPUT,
         string ...$guards
     ): mixed {
-        if ($version === ReCaptcha::SCORE) {
-            throw new LogicException('Use the [recaptcha.score] middleware to capture score-driven challenges.');
-        }
+        $this->ensureValidVersion($version);
 
         if ($this->shouldCheckReCaptcha($remember, $guards)) {
             $this->ensureChallengeIsPresent($request, $input = $this->normalizeInput($input));
 
-            $response = $this->saveResponse($request->input($input), $request->ip(), $version, $input)->wait();
-
-            if (!$response->success) {
-
-            }
+            $this->saveResponse($request->input($input), $request->ip(), $version, $input)->wait();
 
             if ($this->shouldCheckRemember($remember)) {
                 $this->storeRememberInSession($remember);
@@ -72,6 +68,21 @@ class VerifyReCaptchaV2
         }
 
         return $next($request);
+    }
+
+    /**
+     * Ensure the developer has the correct version.
+     *
+     * @param  string  $input
+     * @return void
+     */
+    protected function ensureValidVersion(string $input): void
+    {
+        if ($input === ReCaptcha::SCORE) {
+            throw new LogicException(
+                'Use the [' . VerifyReCaptchaV3::ALIAS . '] middleware to capture score-driven challenges.'
+            );
+        }
     }
 
     /**
@@ -107,23 +118,6 @@ class VerifyReCaptchaV2
         }
 
         return $remember !== 'false';
-    }
-
-    /**
-     * Check if the request "remember" should be checked.
-     *
-     * @return bool
-     */
-    protected function hasRemember(): bool
-    {
-        if (now()->getTimestamp() < session($key = $this->rememberKey())) {
-            return true;
-        }
-
-        // Dispose of the expired session key if we have the opportunity.
-        session()->forget($key);
-
-        return false;
     }
 
     /**

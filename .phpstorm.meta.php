@@ -1,5 +1,11 @@
 <?php
 
+namespace PHPSTORM_META
+{
+
+    expectedArguments(\recaptcha(), 0, 'checkbox', 'invisible', 'android', 'score');
+}
+
 namespace Illuminate\Http
 {
     class Request
