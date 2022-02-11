@@ -11,21 +11,21 @@ use function app;
 
 class ReCaptcha
 {
-    // Constants to identify each ReCaptcha service.
+    // Constants to identify each reCAPTCHA service.
     public const CHECKBOX = 'checkbox';
     public const INVISIBLE = 'invisible';
     public const ANDROID = 'android';
     public const SCORE = 'score';
 
     /**
-     * ReCaptcha v2 secret for testing on "localhost".
+     * reCAPTCHA v2 secret for testing on "localhost".
      *
      * @var string
      */
     public const TEST_V2_SECRET = '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe';
 
     /**
-     * ReCaptcha v2 site key for testing on "localhost".
+     * reCAPTCHA v2 site key for testing on "localhost".
      *
      * @var string
      */
@@ -39,7 +39,7 @@ class ReCaptcha
     public const SERVER_ENDPOINT = 'https://www.google.com/recaptcha/api/siteverify';
 
     /**
-     * The name of the input for a ReCaptcha frontend response.
+     * The name of the input for a reCAPTCHA frontend response.
      *
      * @var string
      */
