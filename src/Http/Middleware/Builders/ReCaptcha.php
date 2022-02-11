@@ -108,14 +108,14 @@ class ReCaptcha
     /**
      * Checking for a "remember" on this route.
      *
-     * @param  int|null  $minutes
+     * @param  int|string|null  $minutes
      * @return static
      */
-    public function remember(int $minutes = null): static
+    public function remember(int|string $minutes = null): static
     {
         $this->ensureVersionIsCorrect(true);
 
-        $this->remember = (string) ($minutes ?? config('recaptcha.remember.minutes'));
+        $this->remember = $minutes ?? config('recaptcha.remember.minutes');
 
         return $this;
     }
@@ -127,7 +127,7 @@ class ReCaptcha
      */
     public function rememberForever(): static
     {
-        return $this->remember(0);
+        return $this->remember('inf');
     }
 
     /**

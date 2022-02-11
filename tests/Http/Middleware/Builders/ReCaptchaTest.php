@@ -15,7 +15,7 @@ class ReCaptchaTest extends TestCase
         static::assertEquals('recaptcha:checkbox,null,null,bar', (string) ReCaptcha::checkbox()->forGuests('bar'));
         static::assertEquals('recaptcha:checkbox,10,null,bar', (string) ReCaptcha::checkbox()->forGuests('bar')->remember());
         static::assertEquals('recaptcha:checkbox,20,null,bar', (string) ReCaptcha::checkbox()->forGuests('bar')->remember(20));
-        static::assertEquals('recaptcha:checkbox,0,null,bar', (string) ReCaptcha::checkbox()->forGuests('bar')->rememberForever());
+        static::assertEquals('recaptcha:checkbox,inf,null,bar', (string) ReCaptcha::checkbox()->forGuests('bar')->rememberForever());
         static::assertEquals('recaptcha:checkbox,false,null,bar', (string) ReCaptcha::checkbox()->forGuests('bar')->dontRemember());
         static::assertEquals('recaptcha:checkbox,false,foo,bar', (string) ReCaptcha::checkbox()->input('foo')->forGuests('bar')->dontRemember());
     }
@@ -27,7 +27,7 @@ class ReCaptchaTest extends TestCase
         static::assertEquals('recaptcha:invisible,null,null,bar', (string) ReCaptcha::invisible()->forGuests('bar'));
         static::assertEquals('recaptcha:invisible,10,null,bar', (string) ReCaptcha::invisible()->forGuests('bar')->remember());
         static::assertEquals('recaptcha:invisible,20,null,bar', (string) ReCaptcha::invisible()->forGuests('bar')->remember(20));
-        static::assertEquals('recaptcha:invisible,0,null,bar', (string) ReCaptcha::invisible()->forGuests('bar')->rememberForever());
+        static::assertEquals('recaptcha:invisible,inf,null,bar', (string) ReCaptcha::invisible()->forGuests('bar')->rememberForever());
         static::assertEquals('recaptcha:invisible,false,null,bar', (string) ReCaptcha::invisible()->forGuests('bar')->dontRemember());
         static::assertEquals('recaptcha:invisible,false,foo,bar', (string) ReCaptcha::invisible()->input('foo')->forGuests('bar')->dontRemember());
     }
@@ -39,7 +39,7 @@ class ReCaptchaTest extends TestCase
         static::assertEquals('recaptcha:android,null,null,bar', (string) ReCaptcha::android()->forGuests('bar'));
         static::assertEquals('recaptcha:android,10,null,bar', (string) ReCaptcha::android()->forGuests('bar')->remember());
         static::assertEquals('recaptcha:android,20,null,bar', (string) ReCaptcha::android()->forGuests('bar')->remember(20));
-        static::assertEquals('recaptcha:android,0,null,bar', (string) ReCaptcha::android()->forGuests('bar')->rememberForever());
+        static::assertEquals('recaptcha:android,inf,null,bar', (string) ReCaptcha::android()->forGuests('bar')->rememberForever());
         static::assertEquals('recaptcha:android,false,null,bar', (string) ReCaptcha::android()->forGuests('bar')->dontRemember());
         static::assertEquals('recaptcha:android,false,foo,bar', (string) ReCaptcha::android()->input('foo')->forGuests('bar')->dontRemember());
     }

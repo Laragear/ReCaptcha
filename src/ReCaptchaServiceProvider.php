@@ -57,7 +57,7 @@ class ReCaptchaServiceProvider extends ServiceProvider
         Request::macro('isHuman', [RequestMacro::class, 'isHuman']);
 
         $this->app->resolving('blade.compiler', static function (BladeCompiler $blade): void {
-            $blade->if('challenged', [Blade\Directives\Challenged::class, 'directive']);
+            $blade->if('robot', [Blade\Directives\Robot::class, 'directive']);
         });
     }
 }

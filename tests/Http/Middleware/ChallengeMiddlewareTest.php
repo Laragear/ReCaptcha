@@ -9,6 +9,7 @@ use LogicException;
 use Tests\CreatesFulfilledResponse;
 use Tests\TestCase;
 use function now;
+use const INF;
 
 class ChallengeMiddlewareTest extends TestCase
 {
@@ -678,7 +679,7 @@ class ChallengeMiddlewareTest extends TestCase
     {
         $this->app->make('config')->set([
             'recaptcha.remember.enabled' => true,
-            'recaptcha.remember.minutes' => 0
+            'recaptcha.remember.minutes' => INF
         ]);
 
         $response = $this->fulfilledResponse([
@@ -714,17 +715,17 @@ class ChallengeMiddlewareTest extends TestCase
         })->middleware('recaptcha:android');
 
         $this->post('v2/checkbox/forever', [ReCaptcha::INPUT => 'token'])
-            ->assertOk()->assertSessionHas('_recaptcha', 0);
+            ->assertOk()->assertSessionHas('_recaptcha', INF);
 
         $this->flushSession();
 
         $this->post('v2/invisible/forever', [ReCaptcha::INPUT => 'token'])
-            ->assertOk()->assertSessionHas('_recaptcha', 0);
+            ->assertOk()->assertSessionHas('_recaptcha', INF);
 
         $this->flushSession();
 
         $this->post('v2/android/forever', [ReCaptcha::INPUT => 'token'])
-            ->assertOk()->assertSessionHas('_recaptcha', 0);
+            ->assertOk()->assertSessionHas('_recaptcha', INF);
     }
 
     public function test_challenge_is_remembered_forever_when_config_overridden(): void
@@ -747,32 +748,32 @@ class ChallengeMiddlewareTest extends TestCase
             if ($this->app->has(ReCaptchaResponse::class)) {
                 return $this->app->make(ReCaptchaResponse::class);
             }
-        })->middleware('recaptcha:checkbox,0');
+        })->middleware('recaptcha:checkbox,inf');
 
         $this->app->make('router')->post('v2/invisible/forever', function () {
             if ($this->app->has(ReCaptchaResponse::class)) {
                 return $this->app->make(ReCaptchaResponse::class);
             }
-        })->middleware('recaptcha:invisible,0');
+        })->middleware('recaptcha:invisible,infinite');
 
         $this->app->make('router')->post('v2/android/forever', function () {
             if ($this->app->has(ReCaptchaResponse::class)) {
                 return $this->app->make(ReCaptchaResponse::class);
             }
-        })->middleware('recaptcha:android,0');
+        })->middleware('recaptcha:android,forever');
 
         $this->post('v2/checkbox/forever', [ReCaptcha::INPUT => 'token'])
-            ->assertOk()->assertSessionHas('_recaptcha', 0);
+            ->assertOk()->assertSessionHas('_recaptcha', INF);
 
         $this->flushSession();
 
         $this->post('v2/invisible/forever', [ReCaptcha::INPUT => 'token'])
-            ->assertOk()->assertSessionHas('_recaptcha', 0);
+            ->assertOk()->assertSessionHas('_recaptcha', INF);
 
         $this->flushSession();
 
         $this->post('v2/android/forever', [ReCaptcha::INPUT => 'token'])
-            ->assertOk()->assertSessionHas('_recaptcha', 0);
+            ->assertOk()->assertSessionHas('_recaptcha', INF);
     }
 
     public function test_challenge_is_remembered_with_different_offset(): void
@@ -880,7 +881,7 @@ class ChallengeMiddlewareTest extends TestCase
         $this->app->make('config')->set('recaptcha.remember.enabled', true);
 
         $this->session([
-            '_recaptcha' => 0
+            '_recaptcha' => INF
         ]);
 
         $this->mock(ReCaptcha::class)->expects('getChallenge')->never();

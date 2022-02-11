@@ -7,9 +7,10 @@ use Illuminate\Contracts\Config\Repository as ConfigContract;
 use Illuminate\Http\Request;
 use Laragear\ReCaptcha\ReCaptcha;
 use LogicException;
-use function is_numeric;
 use function now;
 use function session;
+use function strtolower;
+use const INF;
 
 class VerifyReCaptchaV2
 {
@@ -137,16 +138,16 @@ class VerifyReCaptchaV2
      */
     protected function storeRememberInSession(string|int $offset): void
     {
-        if (!is_numeric($offset)) {
+        $offset = strtolower($offset);
+
+        if ($offset === 'null') {
             $offset = $this->rememberMinutes();
         }
 
-        $offset = (int) $offset;
-
-        // If the offset is over zero, we will set it as offset minutes.
-        if ($offset) {
-            $offset = now()->addMinutes($offset)->getTimestamp();
-        }
+        $offset = match ($offset) {
+            INF, 'inf', 'infinite', 'forever' => INF,
+            default => now()->addMinutes($offset)->getTimestamp(),
+        };
 
         session()->put($this->rememberKey(), $offset);
     }

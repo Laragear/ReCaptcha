@@ -1,7 +1,3 @@
-![Franck V. - Unsplash (UL) #JjGXjESMxOY](https://images.unsplash.com/photo-1535378620166-273708d44e4c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1280&h=400&q=80)
-
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/darkghosthunter/captchavel.svg?style=flat-square)](https://packagist.org/packages/darkghosthunter/captchavel) [![License](https://poser.pugx.org/darkghosthunter/captchavel/license)](https://packagist.org/packages/darkghosthunter/larapoke) ![](https://img.shields.io/packagist/php-v/darkghosthunter/captchavel.svg) ![](https://github.com/DarkGhostHunter/Captchavel/workflows/PHP%20Composer/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/DarkGhostHunter/Captchavel/badge.svg?branch=master)](https://coveralls.io/github/DarkGhostHunter/Captchavel?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/9571f57106069b5f3aac/maintainability)](https://codeclimate.com/github/DarkGhostHunter/Captchavel/maintainability) [![Laravel Octane Compatible](https://img.shields.io/badge/Laravel%20Octane-Compatible-success?style=flat&logo=laravel)](https://github.com/laravel/octane)
-
 # ReCaptcha
 
 Integrate reCAPTCHA into your Laravel app better than the Big G itself!
@@ -43,7 +39,7 @@ RECAPTCHA_SCORE_KEY=6t5geA4UAAAAAN...
 
 This allows you to check different reCAPTCHA mechanisms using the same application, in different environments.
 
-> Captchavel already comes with v2 keys for local development. For v3, you will need to create your own set of credentials once on production.
+> ReCaptcha already comes with v2 keys for local development. For v3, you will need to create your own set of credentials once on production.
 
 ## Usage
 
@@ -88,16 +84,16 @@ Route::post('message', [ChatController::class, 'login'])
      ->middleware(ReCaptcha::checkbox()->rememberForever());
 ```
 
-You should use this in conjunction with the `@unlesschallenged` directive in your Blade templates to render a challenge when the user has not successfully done one before.
+You should use this in conjunction with the `@robot` directive in your Blade templates to render a challenge when the user has not successfully done one before.
 
 ```blade
-@unlesschallenged
+@robot
   <div class="g-recaptcha"
        data-sitekey="{{ recaptcha('invisible') }}"
        data-callback="onSubmit"
        data-size="invisible">
   </div>
-@endchallenged
+@endrobot
 ```
 
 > Good places to remember a challenge for some minutes are forms which are expected to fail, or when you have multiple forms the user may jump between.
@@ -367,7 +363,7 @@ Remembering the user once a V2 challenge is successful is disabled by default.
 
 It's recommended to [use a per-route basis "remember"](#remembering-challenges) if you expect only some routes to remember challenges, instead of the whole application.
 
-This also control how many minutes to set the "remember". When zero or `null`, the "remember" will last until the session expires.
+This also control how many minutes to set the "remember". You can set `INF` constant to remember the challenge forever (or until the session expires).
 
 ### Credentials
 

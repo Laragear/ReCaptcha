@@ -92,9 +92,9 @@ trait VerificationHelpers
     /**
      * Return the minutes time to remember the challenge.
      *
-     * @return int
+     * @return int|float
      */
-    protected function rememberMinutes(): int
+    protected function rememberMinutes(): int|float
     {
         return $this->config->get('recaptcha.remember.minutes');
     }

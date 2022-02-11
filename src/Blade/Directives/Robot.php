@@ -6,7 +6,7 @@ use function config;
 use function now;
 use function session;
 
-class Challenged
+class Robot
 {
     /**
      * Check if the ReCaptcha challenge was remembered and not expired.
@@ -15,8 +15,6 @@ class Challenged
      */
     public static function directive(): bool
     {
-        $timestamp = session()->get(config()->get('recaptcha.remember.key', '_recaptcha'));
-
-        return $timestamp !== null && (!$timestamp || now()->getTimestamp() < $timestamp);
+        return now()->getTimestamp() > session()->get(config()->get('recaptcha.remember.key', '_recaptcha'));
     }
 }
