@@ -277,6 +277,8 @@ Route::post('recaptcha', [ConfirmationController::class, 'confirm'])
 
 When the user tries to enter the route, it will be redirected to the view asking to resolve a reCAPTCHA challenge. Once done, it will be redirected to the intended URL.  
 
+![img.png](img.png)
+
 The middleware it's compatible with [remembering challenges](#remember), and will use the default amount of time to not ask again if remembering only when it's enabled globally, otherwise it will be asked to confirm every time.
 
 You can configure the route name and the guards to bypass the confirmation if the user is authenticated after the first argument. 
