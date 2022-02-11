@@ -30,7 +30,7 @@
                         <button type="submit" class="w-100 btn btn-lg btn-primary">
                             {{ trans('recaptcha::confirmation.submit') }}
                         </button>
-                </div>
+                    </form>
                 </div>
             </div>
         </div>
