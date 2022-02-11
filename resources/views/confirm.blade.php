@@ -14,7 +14,7 @@
 <div class="bg-light vh-100">
     <div class="container py-3 h-100">
         <div class="row align-items-center justify-content-center h-100" style="min-height: 400px">
-            <div class="col-md-6 col-lg-5 col-xl-4 text-center">
+            <div class="col-md-6 col-lg-5 col-xl-4 text-center" style="min-width: 360px">
                 <div class="card shadow-sm">
                     <form method="post" class="card-body">
                         @csrf
@@ -25,7 +25,7 @@
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
 
-                        <div class="g-recaptcha mb-3" data-sitekey="{{ recaptcha('checkbox') }}"></div>
+                        <div class="g-recaptcha mb-3 d-flex flex-wrap justify-content-center p-0" data-sitekey="{{ recaptcha('checkbox') }}"></div>
 
                         <button type="submit" class="w-100 btn btn-lg btn-primary">
                             {{ trans('recaptcha::confirmation.submit') }}
