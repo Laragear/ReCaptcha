@@ -11,26 +11,26 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-<div class="bg-light">
-    <div class="container">
-        <div class="row align-items-center justify-content-center">
+<div class="bg-light vh-100">
+    <div class="container py-3 h-100">
+        <div class="row align-items-center justify-content-center h-100" style="min-height: 400px">
             <div class="col-md-6 col-lg-5 col-xl-4 text-center">
                 <div class="card shadow-sm">
-                    <h3 class="card-title">{{ trans('recaptcha::confirmation.title') }}</h3>
-                    <p>{{ trans('recaptcha::confirmation.message') }}</p>
-
-                    @error(\Laragear\ReCaptcha\ReCaptcha::INPUT)
-                        <p class="text-danger">{{ $message }}</p>
-                    @enderror
-
-                    <form method="post" class="mb-3">
+                    <form method="post" class="card-body">
                         @csrf
-                        <div class="g-recaptcha" data-sitekey="{{ recaptcha('checkbox') }}"></div>
+                        <h3 class="card-title">{{ trans('recaptcha::confirmation.title') }}</h3>
+                        <p>{{ trans('recaptcha::confirmation.message') }}</p>
+
+                        @error(\Laragear\ReCaptcha\ReCaptcha::INPUT)
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+
+                        <div class="g-recaptcha mb-3" data-sitekey="{{ recaptcha('checkbox') }}"></div>
 
                         <button type="submit" class="w-100 btn btn-lg btn-primary">
                             {{ trans('recaptcha::confirmation.submit') }}
                         </button>
-                    </form>
+                </div>
                 </div>
             </div>
         </div>
