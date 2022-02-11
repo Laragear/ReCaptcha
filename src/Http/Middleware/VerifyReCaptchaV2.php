@@ -116,16 +116,12 @@ class VerifyReCaptchaV2
      */
     protected function hasRemember(): bool
     {
-        $timestamp = session($key = $this->rememberKey());
-
-        if (null !== $timestamp) {
-            if (!$timestamp || now()->getTimestamp() < $timestamp) {
-                return true;
-            }
-
-            // Dispose of the expired session key if we have the opportunity.
-            session()->forget($key);
+        if (now()->getTimestamp() < session($key = $this->rememberKey())) {
+            return true;
         }
+
+        // Dispose of the expired session key if we have the opportunity.
+        session()->forget($key);
 
         return false;
     }
