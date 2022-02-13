@@ -494,19 +494,15 @@ $this->post('comment', [
 ])->assertSee('Robots are not welcomed here! Go away!');
 ```
 
-## PhpStorm metadata
+## PhpStorm stubs
 
-For PhpStorm users, there is a metadata file to aid in macro autocompletion for this package. You can publish it using the `phpstorm` tag:
+For users of PhpStorm, there is a stub file and a meta file to aid in macro autocompletion for this package. You can publish them using the `phpstorm` tag:
 
 ```shell
 php artisan vendor:publish --provider="Laragear\ReCaptcha\ReCaptchaServiceProvider" --tag="phpstorm"
 ```
 
-Beware of the caveats, as this is a very _green_ implementation by JetBrains.
-
-- Go to declaration doesn't work, as it will point to the meta file and not the original file.
-- Extended class constructor becomes are empty.
-- May be reported as "duplicate declaration".
+The file gets published into the `.stubs` folder of your project, while the meta is located inside `.phpstorm.meta.php` directory. You should point your [PhpStorm to these stubs](https://www.jetbrains.com/help/phpstorm/php.html#advanced-settings-area).
 
 ## Security
 

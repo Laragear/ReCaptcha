@@ -59,12 +59,12 @@ class ServiceProviderTest extends TestCase
         );
     }
 
-    public function test_publishes_phpstorm_meta(): void
+    public function test_publishes_phpstorm_files(): void
     {
-        static::assertSame(
-            [ReCaptchaServiceProvider::PHPSTORM => $this->app->basePath('.phpstorm.meta.php/laragear-recaptcha.php')],
-            ServiceProvider::pathsToPublish(ReCaptchaServiceProvider::class, 'phpstorm')
-        );
+        static::assertSame([
+            ReCaptchaServiceProvider::STUBS => $this->app->basePath('.stubs/vendor/recaptcha.php'),
+            ReCaptchaServiceProvider::META => $this->app->basePath('.phpstorm.meta.php/recaptcha.php')
+        ], ServiceProvider::pathsToPublish(ReCaptchaServiceProvider::class, 'phpstorm'));
     }
 
     public function test_publishes_middleware(): void

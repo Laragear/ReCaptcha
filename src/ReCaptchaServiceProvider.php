@@ -17,7 +17,8 @@ class ReCaptchaServiceProvider extends ServiceProvider
     // These constants point to publishable files/directories.
     public const CONFIG = __DIR__.'/../config/recaptcha.php';
     public const LANG = __DIR__.'/../lang';
-    public const PHPSTORM = __DIR__.'/../.phpstorm.meta.php';
+    public const STUBS = __DIR__.'/../.stubs/stubs.php';
+    public const META = __DIR__.'/../.phpstorm.meta.php';
     public const VIEWS = __DIR__ . '/../resources/views';
 
     /**
@@ -48,9 +49,10 @@ class ReCaptchaServiceProvider extends ServiceProvider
             $this->publishes([static::VIEWS => $this->app->viewPath('vendor/recaptcha')], 'views');
             $this->publishes([static::CONFIG => $this->app->configPath('recaptcha.php')], 'config');
             $this->publishes([static::LANG => $this->app->langPath('vendor/recaptcha')], 'lang');
-            $this->publishes(
-                [static::PHPSTORM => $this->app->basePath('.phpstorm.meta.php/laragear-recaptcha.php')], 'phpstorm'
-            );
+            $this->publishes([
+                static::STUBS => $this->app->basePath('.stubs/vendor/recaptcha.php'),
+                static::META => $this->app->basePath('.phpstorm.meta.php/recaptcha.php')
+            ], 'phpstorm');
         }
 
         $router->aliasMiddleware(Http\Middleware\VerifyReCaptchaV2::ALIAS, Http\Middleware\VerifyReCaptchaV2::class);
