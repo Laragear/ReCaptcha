@@ -1,14 +1,16 @@
 {
     "name": "laragear/recaptcha",
-    "description": "Integrate reCAPTCHA into your Laravel application better than the Big G itself!",
+    "description": "Integrate reCAPTCHA using async HTTP/2, making your app fast with a few lines.!",
+    "type": "library",
+    "license": "propietary",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "keywords": [
         "laragear",
         "captcha",
-        "recaptcha"
+        "recaptcha",
+        "google"
     ],
-    "homepage": "https://github.com/laragear/recaptcha",
-    "license": "propietary",
-    "type": "library",
     "authors": [
         {
             "name": "Italo Israel Baeza Cabrera",
@@ -16,6 +18,10 @@
             "homepage": "https://patreon.com/packagesforlaravel"
         }
     ],
+    "support": {
+        "source": "https://github.com/recaptcha/rut",
+        "issues": "https://github.com/recaptcha/rut/issues"
+    },
     "require": {
         "php": "^8.0.2",
         "ext-json": "*",
@@ -59,5 +65,19 @@
                 "ReCaptcha": "Laragear\\ReCaptcha\\Facades\\ReCaptcha"
             }
         }
-    }
+    },
+    "funding": [
+        {
+            "type": "Patreon",
+            "url": "https://patreon.com/PackagesForLaravel"
+        },
+        {
+            "type": "Ko-Fi",
+            "url": "https://ko-fi.com/DarkGhostHunter"
+        },
+        {
+            "type": "Paypal",
+            "url": "https://paypal.me/darkghosthunter"
+        }
+    ]
 }
