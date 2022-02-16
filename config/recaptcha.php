@@ -79,6 +79,22 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | HTTP Client Options
+    |--------------------------------------------------------------------------
+    |
+    | This array is passed down to the underlying HTTP Client which will make
+    | the request to reCAPTCHA servers. By default, is set to use HTTP/2 for
+    | the request. You can change, remove or add more options in the array.
+    |
+    | @see https://docs.guzzlephp.org/en/stable/request-options.html
+    */
+
+    'client' => [
+        'version' => 2.0,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Credentials
     |--------------------------------------------------------------------------
     |

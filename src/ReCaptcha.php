@@ -2,12 +2,12 @@
 
 namespace Laragear\ReCaptcha;
 
-use function app;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Http\Client\Factory;
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
 use LogicException;
+use function app;
 
 class ReCaptcha
 {
@@ -113,7 +113,7 @@ class ReCaptcha
         return $this->http
             ->asForm()
             ->async()
-            ->withOptions(['version' => 2.0])
+            ->withOptions($this->config->get('recaptcha.client'))
             ->post(static::SERVER_ENDPOINT, [
                 'secret'   => $this->secret($version),
                 'response' => $challenge,

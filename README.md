@@ -345,6 +345,9 @@ return [
         'key'     => '_recaptcha',
         'minutes' => 10,
     ],
+    'client' => [
+        'version' => 2.0,
+    ],
     'credentials'       => [
         // ...
     ]
@@ -423,6 +426,20 @@ Remembering the user once a V2 challenge is successful is disabled by default.
 It's recommended to [use a per-route basis "remember"](#remembering-challenges) if you expect only some routes to remember challenges, instead of the whole application.
 
 This also control how many minutes to set the "remember". You can set `INF` constant to remember the challenge forever (or until the session expires).
+
+### HTTP Client options
+
+```php
+return [
+    'client' => [
+        'version' => 2.0,
+    ],
+];
+```
+
+This array sets the options for the outgoing request to reCAPTCHA servers. [This is handled by Guzzle](https://docs.guzzlephp.org/en/stable/request-options.html), which in turn will pass it to the underlying transport. Depending on your system, it will probably be cURL.
+
+By default, it instructs Guzzle to use HTTP/2 whenever possible.
 
 ### Credentials
 
@@ -517,6 +534,10 @@ The file gets published into the `.stubs` folder of your project, while the meta
 - There are no static properties written during a request.
 
 There should be no problems using this package with Laravel Octane as intended.
+
+## HTTP/3
+
+Currently, HTTP/3 is [still on draft state](https://datatracker.ietf.org/doc/draft-ietf-quic-http/). Until it's [Internet Standard](https://en.wikipedia.org/wiki/Internet_Standard), cURL and Guzzle and reCAPTCHA servers must implement the finished state of the protocol, which as of today is still a moving target.
 
 ## Security
 

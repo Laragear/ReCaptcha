@@ -232,4 +232,28 @@ class ReCaptchaTest extends TestCase
         static::assertSame(0.5, $score->score);
         static::assertSame('bar', $score->foo);
     }
+
+    public function test_http_factory_receives_config(): void
+    {
+        $this->app->make('config')->set([
+            'recaptcha.credentials.score.secret' => 'secret',
+            'recaptcha.client' => ['foo' => 'bar'],
+        ]);
+
+        $mock = $this->mock(Factory::class);
+
+        $mock->expects('asForm')->withNoArgs()->once()->andReturnSelf();
+        $mock->expects('async')->withNoArgs()->once()->andReturnSelf();
+        $mock->expects('withOptions')->with(['foo' => 'bar'])->once()->andReturnSelf();
+        $mock->expects('post')
+            ->with(ReCaptcha::SERVER_ENDPOINT, [
+                'secret'   => 'secret',
+                'response' => 'token',
+                'remoteip' => '127.0.0.1',
+            ])
+            ->once()
+            ->andReturn($this->fulfilledPromise());
+
+        $this->app->make(ReCaptcha::class)->getChallenge('token', '127.0.0.1', 'score', ReCaptcha::INPUT);
+    }
 }
