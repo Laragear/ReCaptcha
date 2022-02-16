@@ -63,7 +63,7 @@ class ServiceProviderTest extends TestCase
     {
         static::assertSame([
             ReCaptchaServiceProvider::STUBS => $this->app->basePath('.stubs/vendor/recaptcha.php'),
-            ReCaptchaServiceProvider::META => $this->app->basePath('.phpstorm.meta.php/recaptcha.php')
+            ReCaptchaServiceProvider::META => $this->app->basePath('.phpstorm.meta.php/recaptcha.php'),
         ], ServiceProvider::pathsToPublish(ReCaptchaServiceProvider::class, 'phpstorm'));
     }
 

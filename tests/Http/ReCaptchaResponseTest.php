@@ -6,13 +6,13 @@ use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response as GuzzleResponse;
 use Illuminate\Http\Client\Response;
 use Illuminate\Validation\ValidationException;
+use function json_encode;
+use const JSON_THROW_ON_ERROR;
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
 use Laragear\ReCaptcha\ReCaptcha;
+use function now;
 use Tests\CreatesFulfilledResponse;
 use Tests\TestCase;
-use function json_encode;
-use function now;
-use const JSON_THROW_ON_ERROR;
 
 class ReCaptchaResponseTest extends TestCase
 {

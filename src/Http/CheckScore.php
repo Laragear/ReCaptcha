@@ -2,8 +2,6 @@
 
 namespace Laragear\ReCaptcha\Http;
 
-use Laragear\ReCaptcha\Events\ReCaptchaScoredHuman;
-
 trait CheckScore
 {
     /**
@@ -29,7 +27,7 @@ trait CheckScore
     /**
      * Check if the request was made by a human.
      *
-     * @return bool  If the response is V2, this always returns false.
+     * @return bool If the response is V2, this always returns false.
      */
     public function isHuman(): bool
     {
@@ -39,7 +37,7 @@ trait CheckScore
     /**
      * Check if the request was made by a robot.
      *
-     * @return bool  If the response is V2, this always returns false.
+     * @return bool If the response is V2, this always returns false.
      */
     public function isRobot(): bool
     {

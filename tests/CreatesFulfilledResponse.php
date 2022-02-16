@@ -5,10 +5,10 @@ namespace Tests;
 use GuzzleHttp\Promise\FulfilledPromise;
 use GuzzleHttp\Psr7\Response as GuzzleResponse;
 use Illuminate\Http\Client\Response;
-use Laragear\ReCaptcha\Http\ReCaptchaResponse;
-use Laragear\ReCaptcha\ReCaptcha;
 use function json_encode;
 use const JSON_THROW_ON_ERROR;
+use Laragear\ReCaptcha\Http\ReCaptchaResponse;
+use Laragear\ReCaptcha\ReCaptcha;
 
 trait CreatesFulfilledResponse
 {
@@ -16,8 +16,7 @@ trait CreatesFulfilledResponse
         array $properties = ['success' => true],
         string $input = ReCaptcha::INPUT,
         string $action = null,
-    ): ReCaptchaResponse
-    {
+    ): ReCaptchaResponse {
         return new ReCaptchaResponse(
             $this->fulfilledPromise($properties),
             $input,
