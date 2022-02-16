@@ -510,6 +510,13 @@ php artisan vendor:publish --provider="Laragear\ReCaptcha\ReCaptchaServiceProvid
 
 The file gets published into the `.stubs` folder of your project, while the meta is located inside `.phpstorm.meta.php` directory. You should point your [PhpStorm to these stubs](https://www.jetbrains.com/help/phpstorm/php.html#advanced-settings-area).
 
+## Laravel Octane compatibility
+
+- The only singleton registered is the `ReCaptcha` class, which uses a stale config instance. **You shouldn't change the config**.
+- There are no static properties written during a request.
+
+There should be no problems using this package with Laravel Octane as intended.
+
 ## Security
 
 If you discover any security related issues, please email darkghosthunter@gmail.com instead of using the issue tracker.
