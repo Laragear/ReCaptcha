@@ -10,6 +10,12 @@ Route::post('login', function () {
 })->middleware('recaptcha:checkbox');
 ```
 
+## Keep this package free
+
+[![](.assets/patreon.png)](https://patreon.com/packagesforlaravel)[![](.assets/ko-fi.png)](https://ko-fi.com/DarkGhostHunter)[![](.assets/buymeacoffee.png)](https://www.buymeacoffee.com/darkghosthunter)[![](.assets/paypal.png)](https://www.paypal.com/paypalme/darkghosthunter)
+
+Your support allows me to keep this package free, up-to-date and maintainable. Alternatively, you can **[spread the word!](http://twitter.com/share?text=I%20am%20using%20this%20cool%20PHP%20package&url=https://github.com%2FLaragear%2FReCaptcha&hashtags=PHP,Laravel)**
+
 ## Requirements
 
 * Laravel 9.x, or later
@@ -507,3 +513,9 @@ The file gets published into the `.stubs` folder of your project, while the meta
 ## Security
 
 If you discover any security related issues, please email darkghosthunter@gmail.com instead of using the issue tracker.
+
+# License
+
+This specific package version is licensed under the terms of the [MIT License](LICENSE.md), at time of publishing.
+
+[Laravel](https://laravel.com) is a Trademark of [Taylor Otwell](https://github.com/TaylorOtwell/). Copyright © 2011-2022 Laravel LLC.

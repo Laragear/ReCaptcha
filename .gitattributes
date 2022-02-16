@@ -11,3 +11,4 @@
 /.editorconfig      export-ignore
 /*.png              export-ignore
 /*.jpg              export-ignore
+/.assets            export-ignore
