@@ -1,6 +1,6 @@
 {
     "name": "laragear/recaptcha",
-    "description": "Integrate reCAPTCHA using async HTTP/2, making your app fast with a few lines.!",
+    "description": "Integrate reCAPTCHA using async HTTP/2, making your app fast with a few lines.",
     "type": "library",
     "license": "MIT",
     "minimum-stability": "stable",
