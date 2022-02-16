@@ -7,7 +7,7 @@ trait RegistersPackage
     protected function getPackageAliases($app)
     {
         return [
-            'ReCaptcha' => 'Laragear\ReCaptcha\Facades\ReCaptcha'
+            'ReCaptcha' => 'Laragear\ReCaptcha\Facades\ReCaptcha',
         ];
     }
 

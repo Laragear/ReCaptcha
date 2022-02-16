@@ -2,14 +2,14 @@
 
 namespace Laragear\ReCaptcha\Http\Middleware\Builders;
 
+use function config;
+use function debug_backtrace;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Laragear\ReCaptcha\Http\Middleware\VerifyReCaptchaV2;
 use Laragear\ReCaptcha\Http\Middleware\VerifyReCaptchaV3;
 use Laragear\ReCaptcha\ReCaptcha as BaseReCaptcha;
 use LogicException;
-use function config;
-use function debug_backtrace;
 use function max;
 use function min;
 use function number_format;
@@ -164,7 +164,7 @@ class ReCaptcha
     }
 
     /**
-     * Sets the action for the
+     * Sets the action for the.
      *
      * @param  string  $action
      * @return $this

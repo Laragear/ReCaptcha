@@ -3,13 +3,13 @@
 namespace Tests\Http\Middleware;
 
 use Illuminate\Auth\GenericUser;
+use const INF;
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
 use Laragear\ReCaptcha\ReCaptcha;
 use LogicException;
+use function now;
 use Tests\CreatesFulfilledResponse;
 use Tests\TestCase;
-use function now;
-use const INF;
 
 class ChallengeMiddlewareTest extends TestCase
 {
@@ -22,7 +22,7 @@ class ChallengeMiddlewareTest extends TestCase
 
         $app->make('config')->set([
             'recaptcha.enable' => true,
-            'recaptcha.fake' => false
+            'recaptcha.fake' => false,
         ]);
     }
 
@@ -679,7 +679,7 @@ class ChallengeMiddlewareTest extends TestCase
     {
         $this->app->make('config')->set([
             'recaptcha.remember.enabled' => true,
-            'recaptcha.remember.minutes' => INF
+            'recaptcha.remember.minutes' => INF,
         ]);
 
         $response = $this->fulfilledResponse([
@@ -780,7 +780,7 @@ class ChallengeMiddlewareTest extends TestCase
     {
         $this->app->make('config')->set([
             'recaptcha.remember.enabled' => true,
-            'recaptcha.remember.minutes' => 30
+            'recaptcha.remember.minutes' => 30,
         ]);
 
         $this->travelTo($now = now());
@@ -866,7 +866,7 @@ class ChallengeMiddlewareTest extends TestCase
         $this->app->make('config')->set('recaptcha.remember.enabled', true);
 
         $this->session([
-            '_recaptcha' => now()->addMinute()->getTimestamp()
+            '_recaptcha' => now()->addMinute()->getTimestamp(),
         ]);
 
         $this->mock(ReCaptcha::class)->expects('getChallenge')->never();
@@ -881,7 +881,7 @@ class ChallengeMiddlewareTest extends TestCase
         $this->app->make('config')->set('recaptcha.remember.enabled', true);
 
         $this->session([
-            '_recaptcha' => INF
+            '_recaptcha' => INF,
         ]);
 
         $this->mock(ReCaptcha::class)->expects('getChallenge')->never();
@@ -950,7 +950,7 @@ class ChallengeMiddlewareTest extends TestCase
 
         $response = $this->fulfilledResponse([
             'success' => false,
-            'errors' => ['foo', 'bar']
+            'errors' => ['foo', 'bar'],
         ]);
 
         $mock = $this->mock(ReCaptcha::class);

@@ -3,8 +3,8 @@
 namespace Tests\Blade\Directives;
 
 use Illuminate\Support\Facades\Blade;
-use Tests\TestCase;
 use function now;
+use Tests\TestCase;
 
 class RobotTest extends TestCase
 {

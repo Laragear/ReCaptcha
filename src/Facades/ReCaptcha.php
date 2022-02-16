@@ -9,7 +9,6 @@ use Laragear\ReCaptcha\ReCaptchaFake;
  * @method static bool hasResponse()
  * @method static \Laragear\ReCaptcha\Http\ReCaptchaResponse getChallenge(?string $token, string $ip, string $version, string $input, string $action = null)
  * @method static \Laragear\ReCaptcha\Http\ReCaptchaResponse response()
- *
  * @method static \Laragear\ReCaptcha\ReCaptcha|\Laragear\ReCaptcha\ReCaptchaFake getFacadeRoot()
  */
 class ReCaptcha extends Facade
@@ -46,7 +45,6 @@ class ReCaptcha extends Facade
      * Makes the fake ReCaptcha response with a fake score.
      *
      * @param  float  $score
-     *
      * @return void
      */
     public static function fakeScore(float $score): void

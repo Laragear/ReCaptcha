@@ -2,8 +2,8 @@
 
 namespace Tests\Http\Middleware;
 
-use Laragear\ReCaptcha\Http\ReCaptchaResponse;
 use function app;
+use Laragear\ReCaptcha\Http\ReCaptchaResponse;
 
 trait UsesRoutesWithMiddleware
 {

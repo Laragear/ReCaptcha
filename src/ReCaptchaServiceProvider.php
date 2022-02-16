@@ -19,7 +19,7 @@ class ReCaptchaServiceProvider extends ServiceProvider
     public const LANG = __DIR__.'/../lang';
     public const STUBS = __DIR__.'/../.stubs/stubs.php';
     public const META = __DIR__.'/../.phpstorm.meta.php';
-    public const VIEWS = __DIR__ . '/../resources/views';
+    public const VIEWS = __DIR__.'/../resources/views';
 
     /**
      * Register the application services.
@@ -51,7 +51,7 @@ class ReCaptchaServiceProvider extends ServiceProvider
             $this->publishes([static::LANG => $this->app->langPath('vendor/recaptcha')], 'lang');
             $this->publishes([
                 static::STUBS => $this->app->basePath('.stubs/vendor/recaptcha.php'),
-                static::META => $this->app->basePath('.phpstorm.meta.php/recaptcha.php')
+                static::META => $this->app->basePath('.phpstorm.meta.php/recaptcha.php'),
             ], 'phpstorm');
         }
 

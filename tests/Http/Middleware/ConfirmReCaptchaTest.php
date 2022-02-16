@@ -3,12 +3,12 @@
 namespace Tests\Http\Middleware;
 
 use Illuminate\Auth\GenericUser;
+use const INF;
 use Laragear\ReCaptcha\Http\Controllers\ConfirmationController;
 use Laragear\ReCaptcha\ReCaptcha;
+use function now;
 use Tests\CreatesFulfilledResponse;
 use Tests\TestCase;
-use function now;
-use const INF;
 
 class ConfirmReCaptchaTest extends TestCase
 {
@@ -47,7 +47,7 @@ class ConfirmReCaptchaTest extends TestCase
     {
         $this->app->make('config')->set('recaptcha.remember.enabled', false);
         $this->session([
-            '_recaptcha' => INF
+            '_recaptcha' => INF,
         ]);
 
         $this->get('intended')->assertRedirect('confirm');
@@ -64,7 +64,7 @@ class ConfirmReCaptchaTest extends TestCase
     {
         $this->app->make('config')->set('recaptcha.remember.enabled', true);
         $this->session([
-            '_recaptcha' => 0
+            '_recaptcha' => 0,
         ]);
 
         $this->get('intended')->assertRedirect('confirm');
@@ -74,7 +74,7 @@ class ConfirmReCaptchaTest extends TestCase
     {
         $this->app->make('config')->set('recaptcha.remember.enabled', true);
         $this->session([
-            '_recaptcha' => INF
+            '_recaptcha' => INF,
         ]);
 
         $this->get('intended')->assertSee('ok');
@@ -122,7 +122,7 @@ class ConfirmReCaptchaTest extends TestCase
     {
         $this->app->make('config')->set('recaptcha.remember.enabled', true);
         $this->session([
-            'url.intended' => '/intended'
+            'url.intended' => '/intended',
         ]);
 
         $this->travelTo(now());
@@ -150,7 +150,7 @@ class ConfirmReCaptchaTest extends TestCase
         $this->app->make('config')->set('recaptcha.remember.enabled', true);
         $this->session([
             '_recaptcha' => INF,
-            'url.intended' => '/intended'
+            'url.intended' => '/intended',
         ]);
 
         $this->mock(ReCaptcha::class)->expects('getChallenge')->never();

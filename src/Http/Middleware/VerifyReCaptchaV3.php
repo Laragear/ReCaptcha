@@ -2,13 +2,13 @@
 
 namespace Laragear\ReCaptcha\Http\Middleware;
 
+use function app;
 use Closure;
 use Illuminate\Contracts\Config\Repository as ConfigContract;
 use Illuminate\Http\Request;
 use Laragear\ReCaptcha\Facades\ReCaptcha as ReCaptchaFacade;
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
 use Laragear\ReCaptcha\ReCaptcha;
-use function app;
 
 class VerifyReCaptchaV3
 {
@@ -42,6 +42,7 @@ class VerifyReCaptchaV3
      * @param  string  $input
      * @param  string  ...$guards
      * @return mixed
+     *
      * @throws \Illuminate\Validation\ValidationException
      */
     public function handle(
@@ -100,7 +101,6 @@ class VerifyReCaptchaV3
      * Normalizes the action name, or returns null.
      *
      * @param  null|string  $action
-     *
      * @return null|string
      */
     protected function normalizeAction(?string $action): ?string

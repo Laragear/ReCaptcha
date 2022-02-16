@@ -1,12 +1,12 @@
 <?php
 
-if (!function_exists('recaptcha')) {
+if (! function_exists('recaptcha')) {
     /**
      * Returns the site key for the given ReCaptcha challenge mechanism.
      *
      * @param  string  $mode
-     *
      * @return string
+     *
      * @throws \LogicException
      */
     function recaptcha(string $mode): string
