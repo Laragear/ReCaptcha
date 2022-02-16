@@ -5,12 +5,12 @@ namespace Laragear\ReCaptcha\Http\Middleware;
 use Closure;
 use Illuminate\Contracts\Config\Repository as ConfigContract;
 use Illuminate\Http\Request;
+use const INF;
 use Laragear\ReCaptcha\ReCaptcha;
 use LogicException;
 use function now;
 use function session;
 use function strtolower;
-use const INF;
 
 class VerifyReCaptchaV2
 {
@@ -45,6 +45,7 @@ class VerifyReCaptchaV2
      * @param  string  $input
      * @param  string  ...$guards
      * @return mixed
+     *
      * @throws \Illuminate\Validation\ValidationException
      */
     public function handle(
@@ -80,7 +81,7 @@ class VerifyReCaptchaV2
     {
         if ($input === ReCaptcha::SCORE) {
             throw new LogicException(
-                'Use the [' . VerifyReCaptchaV3::ALIAS . '] middleware to capture score-driven challenges.'
+                'Use the ['.VerifyReCaptchaV3::ALIAS.'] middleware to capture score-driven challenges.'
             );
         }
     }

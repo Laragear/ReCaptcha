@@ -1,14 +1,16 @@
-<?php /** @noinspection PhpUnhandledExceptionInspection */
+<?php
+
+/** @noinspection PhpUnhandledExceptionInspection */
 
 namespace Laragear\ReCaptcha;
 
 use GuzzleHttp\Promise\FulfilledPromise;
 use GuzzleHttp\Psr7\Response as GuzzleResponse;
 use Illuminate\Http\Client\Response;
-use Laragear\ReCaptcha\Http\ReCaptchaResponse;
 use function json_encode;
-use function now;
 use const JSON_THROW_ON_ERROR;
+use Laragear\ReCaptcha\Http\ReCaptchaResponse;
+use function now;
 
 /**
  * @internal
@@ -16,7 +18,7 @@ use const JSON_THROW_ON_ERROR;
 class ReCaptchaFake extends ReCaptcha
 {
     /**
-     * Score to fake
+     * Score to fake.
      *
      * @var float|null
      */
@@ -32,7 +34,6 @@ class ReCaptchaFake extends ReCaptcha
         string $input,
         string $action = null,
     ): ReCaptchaResponse {
-
         return new ReCaptchaResponse(
             new FulfilledPromise(
                 new Response(

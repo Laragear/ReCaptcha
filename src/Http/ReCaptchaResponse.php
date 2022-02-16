@@ -2,16 +2,16 @@
 
 namespace Laragear\ReCaptcha\Http;
 
+use function array_key_exists;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Carbon;
-use JsonSerializable;
-use function array_key_exists;
 use function json_encode;
-use function value;
 use const JSON_THROW_ON_ERROR;
+use JsonSerializable;
+use function value;
 
 /**
  * @property-read bool $success
@@ -45,8 +45,7 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
         protected PromiseInterface $promise,
         protected string $input,
         protected ?string $expectedAction = null
-    )
-    {
+    ) {
         $this->promise = $this->promise->then(function (Response $response): void {
             $this->attributes = $response->json();
             $this->validate();
@@ -156,6 +155,7 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
      *
      * @param  int  $options
      * @return string
+     *
      * @throws \JsonException
      */
     public function toJson($options = 0): string

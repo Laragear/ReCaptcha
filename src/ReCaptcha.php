@@ -2,12 +2,12 @@
 
 namespace Laragear\ReCaptcha;
 
+use function app;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Http\Client\Factory;
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
 use LogicException;
-use function app;
 
 class ReCaptcha
 {
@@ -72,8 +72,7 @@ class ReCaptcha
         string $version,
         string $input,
         string $action = null,
-    ): ReCaptchaResponse
-    {
+    ): ReCaptchaResponse {
         return new ReCaptchaResponse($this->request($token, $ip, $version), $input, $action);
     }
 
@@ -93,6 +92,7 @@ class ReCaptcha
      * An exception will be thrown when the response doesn't exist.
      *
      * @return \Laragear\ReCaptcha\Http\ReCaptchaResponse
+     *
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function response(): ReCaptchaResponse

@@ -2,11 +2,11 @@
 
 namespace Laragear\ReCaptcha\Http;
 
-use Illuminate\Support\Arr;
-use Illuminate\Validation\ValidationException;
 use function array_filter;
 use function back;
 use function config;
+use Illuminate\Support\Arr;
+use Illuminate\Validation\ValidationException;
 use function implode;
 use function trans;
 
@@ -18,8 +18,9 @@ trait ValidatesResponse
     /**
      * Validates the response based on previously set expectations.
      *
-     * @throws \Illuminate\Validation\ValidationException
      * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function validate(): void
     {
@@ -27,8 +28,8 @@ trait ValidatesResponse
         if (Arr::get($this->attributes, 'success') !== true) {
             throw $this->validationException([
                 $this->input => trans('recaptcha::validation.error', [
-                    'errors' => implode(', ', Arr::wrap($this->attributes['errors'] ?? []))
-                ])
+                    'errors' => implode(', ', Arr::wrap($this->attributes['errors'] ?? [])),
+                ]),
             ]);
         }
 
@@ -40,7 +41,7 @@ trait ValidatesResponse
             }
         }
 
-        if (!empty($errors)) {
+        if (! empty($errors)) {
             throw $this->validationException([$this->input => $errors]);
         }
     }
@@ -60,6 +61,7 @@ trait ValidatesResponse
      * Retrieve the expectations for the current response.
      *
      * @return array
+     *
      * @internal
      */
     protected function expectations(): array

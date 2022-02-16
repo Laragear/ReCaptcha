@@ -37,6 +37,6 @@ trait ChecksGuards
      */
     protected function isAuth(array $guards): bool
     {
-        return !$this->isGuest($guards);
+        return ! $this->isGuest($guards);
     }
 }

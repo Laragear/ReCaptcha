@@ -2,8 +2,8 @@
 
 namespace Laragear\ReCaptcha;
 
-use Laragear\ReCaptcha\Http\ReCaptchaResponse;
 use function app;
+use Laragear\ReCaptcha\Http\ReCaptchaResponse;
 
 /**
  * @internal
@@ -27,6 +27,6 @@ class RequestMacro
      */
     public static function isRobot(): bool
     {
-        return !static::isHuman();
+        return ! static::isHuman();
     }
 }
