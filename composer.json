@@ -19,8 +19,8 @@
         }
     ],
     "support": {
-        "source": "https://github.com/recaptcha/rut",
-        "issues": "https://github.com/recaptcha/rut/issues"
+        "source": "https://github.com/Laragear/ReCaptcha",
+        "issues": "https://github.com/Laragear/ReCaptcha/issues"
     },
     "require": {
         "php": "^8.0.2",
