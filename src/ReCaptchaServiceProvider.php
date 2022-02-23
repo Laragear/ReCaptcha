@@ -50,7 +50,7 @@ class ReCaptchaServiceProvider extends ServiceProvider
             $this->publishes([static::CONFIG => $this->app->configPath('recaptcha.php')], 'config');
             $this->publishes([static::LANG => $this->app->langPath('vendor/recaptcha')], 'lang');
             $this->publishes([
-                static::STUBS => $this->app->basePath('.stubs/vendor/recaptcha.php'),
+                static::STUBS => $this->app->basePath('.stubs/recaptcha.php'),
                 static::META => $this->app->basePath('.phpstorm.meta.php/recaptcha.php'),
             ], 'phpstorm');
         }
