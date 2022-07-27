@@ -26,7 +26,7 @@ class ReCaptcha
      * @param  string  $remember
      * @param  string[]  $guards
      */
-    public function __construct(
+    final public function __construct(
         protected string $version,
         protected string $input = 'null',
         protected string $threshold = 'null',
