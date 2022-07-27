@@ -110,6 +110,7 @@ class ReCaptcha
      */
     protected function request(string $challenge, string $ip, string $version): PromiseInterface
     {
+        // @phpstan-ignore-next-line
         return $this->http
             ->asForm()
             ->async()
