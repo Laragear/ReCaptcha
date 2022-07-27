@@ -106,7 +106,7 @@ class ReCaptcha
      * @param  string  $challenge
      * @param  string  $ip
      * @param  string  $version
-     * @return \GuzzleHttp\Promise\PromiseInterface<\Illuminate\Http\Client\Response>
+     * @return \GuzzleHttp\Promise\PromiseInterface
      */
     protected function request(string $challenge, string $ip, string $version): PromiseInterface
     {
