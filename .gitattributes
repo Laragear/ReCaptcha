@@ -11,3 +11,4 @@
 /.editorconfig      export-ignore
 /.styleci.yml       export-ignore
 /composer.lock      export-ignore
+/img.png
