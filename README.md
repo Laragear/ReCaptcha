@@ -537,7 +537,7 @@ There should be no problems using this package with Laravel Octane as intended.
 
 ## HTTP/3
 
-Currently, HTTP/3 is [still on draft state](https://datatracker.ietf.org/doc/draft-ietf-quic-http/). Until it's [Internet Standard](https://en.wikipedia.org/wiki/Internet_Standard), cURL and Guzzle and reCAPTCHA servers must implement the finished state of the protocol, which as of today is still a moving target.
+Currently, HTTP/3 is on [RFC Proposed Standard](https://datatracker.ietf.org/doc/draft-ietf-quic-http/). Until it's [Internet Standard](https://en.wikipedia.org/wiki/Internet_Standard), cURL and Guzzle and reCAPTCHA servers must implement the finished state of the protocol, which as of today is still a moving target.
 
 ## Security
 
