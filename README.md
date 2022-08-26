@@ -1,5 +1,10 @@
 # ReCaptcha
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/laragear/recaptcha.svg)](https://packagist.org/packages/laragear/recaptcha) [![Latest stable test run](https://github.com/Laragear/ReCaptcha/workflows/Tests/badge.svg)](https://github.com/Laragear/ReCaptcha/actions) [![Codecov coverage](https://codecov.io/gh/Laragear/ReCaptcha/branch/1.x/graph/badge.svg?token=5U6BJUEA4T)](https://codecov.io/gh/Laragear/ReCaptcha) [![Maintainability](https://api.codeclimate.com/v1/badges/b889decbc6af6a1cfd3a/maintainability)](https://codeclimate.com/github/Laragear/ReCaptcha/maintainability) [![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=Laragear_ReCaptcha&metric=alert_status)](https://sonarcloud.io/dashboard?id=Laragear_ReCaptcha) [![Laravel Octane Compatibility](https://img.shields.io/badge/Laravel%20Octane-Compatible-success?style=flat&logo=laravel)](https://laravel.com/docs/9.x/octane#introduction)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/laragear/recaptcha.svg)](https://packagist.org/packages/laragear/recaptcha)
+[![Latest stable test run](https://github.com/Laragear/ReCaptcha/workflows/Tests/badge.svg)](https://github.com/Laragear/ReCaptcha/actions)
+[![Codecov coverage](https://codecov.io/gh/Laragear/ReCaptcha/branch/1.x/graph/badge.svg?token=5U6BJUEA4T)](https://codecov.io/gh/Laragear/ReCaptcha)
+[![Maintainability](https://api.codeclimate.com/v1/badges/b889decbc6af6a1cfd3a/maintainability)](https://codeclimate.com/github/Laragear/ReCaptcha/maintainability)
+[![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=Laragear_ReCaptcha&metric=alert_status)](https://sonarcloud.io/dashboard?id=Laragear_ReCaptcha)
+[![Laravel Octane Compatibility](https://img.shields.io/badge/Laravel%20Octane-Compatible-success?style=flat&logo=laravel)](https://laravel.com/docs/9.x/octane#introduction)
 
 Integrate reCAPTCHA using **async HTTP/2**, making your app **fast** with a few lines.
 
@@ -11,9 +16,10 @@ Route::post('login', function () {
 })->middleware('recaptcha:checkbox');
 ```
 
-## Keep this package free
 
-[![](.assets/patreon.png)](https://patreon.com/packagesforlaravel)[![](.assets/ko-fi.png)](https://ko-fi.com/DarkGhostHunter)[![](.assets/buymeacoffee.png)](https://www.buymeacoffee.com/darkghosthunter)[![](.assets/paypal.png)](https://www.paypal.com/paypalme/darkghosthunter)
+## Become a sponsor
+
+[![](.github/assets/support.png)](https://github.com/sponsors/DarkGhostHunter)
 
 Your support allows me to keep this package free, up-to-date and maintainable. Alternatively, you can **[spread the word!](http://twitter.com/share?text=I%20am%20using%20this%20cool%20PHP%20package&url=https://github.com%2FLaragear%2FReCaptcha&hashtags=PHP,Laravel)**
 
@@ -290,7 +296,7 @@ Route::post('recaptcha', [ConfirmationController::class, 'confirm'])
 
 When the user tries to enter the route, it will be redirected to the view asking to resolve a reCAPTCHA challenge. Once done, it will be redirected to the intended URL.  
 
-![img.png](img.png)
+![img.png](.github/assets/img.png)
 
 The middleware it's compatible with [remembering challenges](#remember), and will use the default amount of time to not ask again if remembering only when it's enabled globally, otherwise it will be asked to confirm every time.
 
