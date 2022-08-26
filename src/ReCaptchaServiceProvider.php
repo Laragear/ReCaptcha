@@ -46,8 +46,10 @@ class ReCaptchaServiceProvider extends ServiceProvider
     public function boot(Router $router): void
     {
         if ($this->app->runningInConsole()) {
+            // @phpstan-ignore-next-line
             $this->publishes([static::VIEWS => $this->app->viewPath('vendor/recaptcha')], 'views');
             $this->publishes([static::CONFIG => $this->app->configPath('recaptcha.php')], 'config');
+            // @phpstan-ignore-next-line
             $this->publishes([static::LANG => $this->app->langPath('vendor/recaptcha')], 'lang');
             $this->publishes([
                 static::STUBS => $this->app->basePath('.stubs/recaptcha.php'),
