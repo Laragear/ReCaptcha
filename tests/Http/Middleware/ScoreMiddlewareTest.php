@@ -12,9 +12,9 @@ use Laragear\ReCaptcha\Http\Middleware\Builders\ReCaptcha as ReCaptchaBuilder;
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
 use Laragear\ReCaptcha\ReCaptcha;
 use Laragear\ReCaptcha\ReCaptchaFake;
+use function now;
 use Tests\CreatesFulfilledResponse;
 use Tests\TestCase;
-use function now;
 
 class ScoreMiddlewareTest extends TestCase
 {
