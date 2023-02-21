@@ -79,7 +79,6 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
      */
     public function carbon(): Carbon
     {
-        // @phpstan-ignore-next-line
         return Carbon::createFromFormat('Y-m-d\TH:i:s\Z', $this->get('challenge_ts'));
     }
 

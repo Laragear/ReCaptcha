@@ -2,6 +2,7 @@
 
 namespace Tests\Http\Middleware;
 
+use Closure;
 use Illuminate\Auth\GenericUser;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Client\Factory;
@@ -71,7 +72,7 @@ class ScoreMiddlewareTest extends TestCase
     public function test_fakes_response_if_authenticated_in_guard(): void
     {
         $this->app->make('router')
-            ->post('v3/guarded', [__CLASS__, 'returnSameResponse'])
+            ->post('v3/guarded', Closure::fromCallable([static::class, 'returnSameResponse']))
             ->middleware(ReCaptchaBuilder::score()->forGuests('web'));
 
         $this->actingAs(User::make(), 'web');
@@ -157,7 +158,7 @@ class ScoreMiddlewareTest extends TestCase
                 $this->fulfilledResponse(['success' => true, 'score' => 0.7, 'foo' => 'bar'])
             );
 
-        $this->app->make('router')->post('test', [__CLASS__, 'returnSameResponse'])
+        $this->app->make('router')->post('test', Closure::fromCallable([static::class, 'returnSameResponse']))
             ->middleware('recaptcha.score:null,null,foo');
 
         $this->post('test', ['foo' => 'token'])
@@ -171,7 +172,7 @@ class ScoreMiddlewareTest extends TestCase
 
         $this->actingAs(new GenericUser([]));
 
-        $this->app->make('router')->post('score/auth', [__CLASS__, 'returnSameResponse'])
+        $this->app->make('router')->post('score/auth', Closure::fromCallable([static::class, 'returnSameResponse']))
             ->middleware('recaptcha.score:0.5,null,null,null');
 
         $this->post('/score/auth')->assertOk();
@@ -188,7 +189,7 @@ class ScoreMiddlewareTest extends TestCase
 
         $this->actingAs(new GenericUser([]), 'api');
 
-        $this->app->make('router')->post('score/auth', [__CLASS__, 'returnSameResponse'])
+        $this->app->make('router')->post('score/auth', Closure::fromCallable([static::class, 'returnSameResponse']))
             ->middleware('recaptcha.score:0.5,null,null,web,api');
 
         $this->post('/score/auth')->assertOk();
@@ -205,7 +206,7 @@ class ScoreMiddlewareTest extends TestCase
 
         $this->actingAs(new GenericUser([]));
 
-        $this->app->make('router')->post('score/auth', [__CLASS__, 'returnSameResponse'])
+        $this->app->make('router')->post('score/auth', Closure::fromCallable([static::class, 'returnSameResponse']))
             ->middleware('recaptcha.score:0.5,null,null,api');
 
         $this->post('/score/auth')
@@ -375,7 +376,7 @@ class ScoreMiddlewareTest extends TestCase
                 $this->fulfilledResponse(['success' => true, 'action' => 'foo', 'apk_package_name' => null])
             );
 
-        $this->app->make('router')->post('test', [__CLASS__, 'returnSameResponse'])
+        $this->app->make('router')->post('test', Closure::fromCallable([static::class, 'returnSameResponse']))
             ->middleware('recaptcha.score:null,null');
 
         $this->post('test', [ReCaptcha::INPUT => 'token'])->assertOk();
@@ -390,7 +391,7 @@ class ScoreMiddlewareTest extends TestCase
                 $this->fulfilledResponse(['success' => true, 'action' => 'foo', 'apk_package_name' => null])
             );
 
-        $this->app->make('router')->post('test', [__CLASS__, 'returnSameResponse'])
+        $this->app->make('router')->post('test', Closure::fromCallable([static::class, 'returnSameResponse']))
             ->middleware('recaptcha.score:null,foo');
 
         $this->post('test', [ReCaptcha::INPUT => 'token'])->assertOk();
@@ -410,7 +411,7 @@ class ScoreMiddlewareTest extends TestCase
                 )
             );
 
-        $this->app->make('router')->post('test', [__CLASS__, 'returnSameResponse'])
+        $this->app->make('router')->post('test', Closure::fromCallable([static::class, 'returnSameResponse']))
             ->middleware('recaptcha.score:null,bar');
 
         $this->post('test', [ReCaptcha::INPUT => 'token'])

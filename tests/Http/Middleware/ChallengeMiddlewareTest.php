@@ -2,6 +2,7 @@
 
 namespace Tests\Http\Middleware;
 
+use Closure;
 use Illuminate\Auth\GenericUser;
 use const INF;
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
@@ -69,11 +70,14 @@ class ChallengeMiddlewareTest extends TestCase
 
         $this->actingAs(new GenericUser([]));
 
-        $this->app->make('router')->post('checkbox/auth', [__CLASS__, 'returnResponseIfExists'])
+        $this->app->make('router')
+            ->post('checkbox/auth', Closure::fromCallable([static::class, 'returnResponseIfExists']))
             ->middleware('recaptcha:checkbox,null,null,null');
-        $this->app->make('router')->post('invisible/auth', [__CLASS__, 'returnResponseIfExists'])
+        $this->app->make('router')
+            ->post('invisible/auth', Closure::fromCallable([static::class, 'returnResponseIfExists']))
             ->middleware('recaptcha:invisible,null,null,null');
-        $this->app->make('router')->post('android/auth', [__CLASS__, 'returnResponseIfExists'])
+        $this->app->make('router')
+            ->post('android/auth', Closure::fromCallable([static::class, 'returnResponseIfExists']))
             ->middleware('recaptcha:android,null,null,null');
 
         $this->post('/checkbox/auth')->assertOk();
@@ -92,11 +96,14 @@ class ChallengeMiddlewareTest extends TestCase
 
         $this->actingAs(new GenericUser([]), 'api');
 
-        $this->app->make('router')->post('checkbox/auth', [__CLASS__, 'returnResponseIfExists'])
+        $this->app->make('router')
+            ->post('checkbox/auth', Closure::fromCallable([static::class, 'returnResponseIfExists']))
             ->middleware('recaptcha:checkbox,null,null,web,api');
-        $this->app->make('router')->post('invisible/auth', [__CLASS__, 'returnResponseIfExists'])
+        $this->app->make('router')
+            ->post('invisible/auth', Closure::fromCallable([static::class, 'returnResponseIfExists']))
             ->middleware('recaptcha:invisible,null,null,web,api');
-        $this->app->make('router')->post('android/auth', [__CLASS__, 'returnResponseIfExists'])
+        $this->app->make('router')
+            ->post('android/auth', Closure::fromCallable([static::class, 'returnResponseIfExists']))
             ->middleware('recaptcha:android,null,null,web,api');
 
         $this->post('/checkbox/auth')->assertOk();
