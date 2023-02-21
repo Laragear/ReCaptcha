@@ -4,13 +4,13 @@ namespace Tests\Http\Middleware;
 
 use Closure;
 use Illuminate\Auth\GenericUser;
+use const INF;
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
 use Laragear\ReCaptcha\ReCaptcha;
 use LogicException;
+use function now;
 use Tests\CreatesFulfilledResponse;
 use Tests\TestCase;
-use function now;
-use const INF;
 
 class ChallengeMiddlewareTest extends TestCase
 {
