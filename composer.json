@@ -15,7 +15,7 @@
         {
             "name": "Italo Israel Baeza Cabrera",
             "email": "darkghosthunter@gmail.com",
-            "homepage": "https://patreon.com/packagesforlaravel"
+            "homepage": "https://github.com/sponsors/DarkGhostHunter"
         }
     ],
     "support": {
@@ -23,18 +23,16 @@
         "issues": "https://github.com/Laragear/ReCaptcha/issues"
     },
     "require": {
-        "php": "^8.0.2",
+        "php": "8.*",
         "ext-json": "*",
-        "illuminate/support": "9.*",
-        "illuminate/http": "9.*",
-        "illuminate/routing": "9.*",
-        "illuminate/container": "9.*",
-        "illuminate/events": "9.*",
-        "guzzlehttp/guzzle": "7.*"
+        "illuminate/support": "9.*|10.*",
+        "illuminate/http": "9.*|10.*",
+        "illuminate/routing": "9.*|10.*",
+        "illuminate/container": "9.*|10.*",
+        "illuminate/events": "9.*|10.*"
     },
     "require-dev": {
-        "orchestra/testbench": "7.*",
-        "phpunit/phpunit": "^9.5"
+        "orchestra/testbench": "^7.22|8.*"
     },
     "autoload": {
         "psr-4": {
@@ -68,16 +66,8 @@
     },
     "funding": [
         {
-            "type": "Patreon",
-            "url": "https://patreon.com/PackagesForLaravel"
-        },
-        {
-            "type": "Ko-Fi",
-            "url": "https://ko-fi.com/DarkGhostHunter"
-        },
-        {
-            "type": "Buy me a cofee",
-            "url": "https://www.buymeacoffee.com/darkghosthunter"
+            "type": "Github Sponsorship",
+            "url": "https://github.com/sponsors/DarkGhostHunter"
         },
         {
             "type": "Paypal",
