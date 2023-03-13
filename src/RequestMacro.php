@@ -2,8 +2,9 @@
 
 namespace Laragear\ReCaptcha;
 
-use function app;
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
+
+use function app;
 
 /**
  * @internal

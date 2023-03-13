@@ -2,11 +2,12 @@
 
 namespace Laragear\ReCaptcha\Http;
 
+use Illuminate\Support\Arr;
+use Illuminate\Validation\ValidationException;
+
 use function array_filter;
 use function back;
 use function config;
-use Illuminate\Support\Arr;
-use Illuminate\Validation\ValidationException;
 use function implode;
 use function trans;
 

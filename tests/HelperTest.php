@@ -3,8 +3,9 @@
 namespace Tests;
 
 use Laragear\ReCaptcha\ReCaptcha;
-use function recaptcha;
 use RuntimeException;
+
+use function recaptcha;
 
 class HelperTest extends TestCase
 {

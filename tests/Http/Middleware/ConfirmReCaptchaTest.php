@@ -3,12 +3,14 @@
 namespace Tests\Http\Middleware;
 
 use Illuminate\Auth\GenericUser;
-use const INF;
 use Laragear\ReCaptcha\Http\Controllers\ConfirmationController;
 use Laragear\ReCaptcha\ReCaptcha;
-use function now;
 use Tests\CreatesFulfilledResponse;
 use Tests\TestCase;
+
+use function now;
+
+use const INF;
 
 class ConfirmReCaptchaTest extends TestCase
 {

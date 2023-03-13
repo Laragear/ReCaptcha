@@ -2,16 +2,18 @@
 
 namespace Laragear\ReCaptcha\Http;
 
-use function array_key_exists;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Carbon;
-use function json_encode;
-use const JSON_THROW_ON_ERROR;
 use JsonSerializable;
+
+use function array_key_exists;
+use function json_encode;
 use function value;
+
+use const JSON_THROW_ON_ERROR;
 
 /**
  * @property-read bool $success
