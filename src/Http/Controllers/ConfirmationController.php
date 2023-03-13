@@ -6,6 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Laragear\ReCaptcha\Http\Middleware\Builders\ReCaptcha;
+
 use function redirect;
 
 class ConfirmationController extends Controller

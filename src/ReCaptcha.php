@@ -2,12 +2,13 @@
 
 namespace Laragear\ReCaptcha;
 
-use function app;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Http\Client\Factory;
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
 use LogicException;
+
+use function app;
 
 class ReCaptcha
 {

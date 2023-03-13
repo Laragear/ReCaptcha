@@ -5,6 +5,7 @@ namespace Laragear\ReCaptcha\Http\Middleware;
 use Closure;
 use Illuminate\Contracts\Config\Repository as ConfigContract;
 use Illuminate\Http\Request;
+
 use function redirect;
 use function url;
 

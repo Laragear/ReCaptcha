@@ -2,13 +2,14 @@
 
 namespace Laragear\ReCaptcha\Http\Middleware;
 
-use function app;
-use function back;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Laragear\ReCaptcha\Facades\ReCaptcha as ReCaptchaFacade;
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
 use Laragear\ReCaptcha\ReCaptcha;
+
+use function app;
+use function back;
 use function strtolower;
 use function trans;
 
