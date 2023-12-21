@@ -17,7 +17,7 @@ class ReCaptchaServiceProvider extends ServiceProvider
     // These constants point to publishable files/directories.
     public const CONFIG = __DIR__.'/../config/recaptcha.php';
     public const LANG = __DIR__.'/../lang';
-    public const STUBS = __DIR__.'/../.stubs/stubs.php';
+    public const STUBS = __DIR__.'/../.stubs/stubs';
     public const META = __DIR__.'/../.phpstorm.meta.php';
     public const VIEWS = __DIR__.'/../resources/views';
 
