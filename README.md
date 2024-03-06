@@ -57,6 +57,8 @@ RECAPTCHA_SCORE_KEY=6t5geA4UAAAAAN...
 
 This allows you to check different reCAPTCHA mechanisms using the same application, in different environments.
 
+> [!NOTE]
+>
 > ReCaptcha already comes with v2 keys for local development. For v3, you will need to create your own set of credentials once on production.
 
 ## Usage
@@ -114,6 +116,8 @@ You should use this in conjunction with the `@robot` directive in your Blade tem
 @endrobot
 ```
 
+> [!TIP]
+>
 > Good places to remember a challenge for some minutes are forms which are expected to fail, or when you have multiple forms the user may jump between.
 
 #### Changing the input name
@@ -181,6 +185,8 @@ if ($response->score > 0.2) {
 }
 ```
 
+> [!WARNING]
+>
 > Be careful of calling `response()`, as it will throw an exception on controllers without challenges.
 
 #### Threshold, action and input name
@@ -200,6 +206,8 @@ Route::post('comment', [CommentController::class, 'store'])
      ->middleware(ReCaptcha::score()->threshold(0.7)->action('post-comment')->input('my_score_input');
 ```
 
+> [!IMPORTANT]
+>
 > When checking the action name, ensure your frontend action matches with the expected in the middleware.
 
 #### Bypassing on authenticated users
@@ -377,6 +385,8 @@ RECAPTCHA_ENABLE=true
 
 This can be handy to enable on some local or development environments to check real interaction using the included _localhost_ test keys, which only work on `localhost`.
 
+> [!IMPORTANT]
+>
 > When switched off, the reCAPTCHA v2 challenges are not validated in the Request input, so you can safely disregard any frontend script or reCAPTCHA tokens or boxes.
 
 ### Fake responses
@@ -389,7 +399,9 @@ If ReCaptcha is [enabled](#enable-switch), setting this to true will allow your 
 
 You should enable it for [running unit tests](#developing-with-recaptcha-v3-score).
 
-> **Warning** - Remember to disable faking on production. Not doing so will fake all score challenges as human, not requiring the challenge token.
+> [!WARNING]
+>
+> Remember to disable faking on production. Not doing so will fake all score challenges as human, not requiring the challenge token.
 
 ### Hostname and APK Package Name
 
@@ -492,6 +504,8 @@ $this->post('login', [
 ])->assertViewIs('login.2fa');
 ```
 
+> [!NOTE]
+>
 > Fake responses don't come with actions, hostnames or APK package names, so these are not validated.
 
 Alternatively, `fakeScore()` method will fake responses with any score you set.
