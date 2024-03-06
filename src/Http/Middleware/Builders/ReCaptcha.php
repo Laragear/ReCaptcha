@@ -8,6 +8,7 @@ use Laragear\ReCaptcha\Http\Middleware\VerifyReCaptchaV2;
 use Laragear\ReCaptcha\Http\Middleware\VerifyReCaptchaV3;
 use Laragear\ReCaptcha\ReCaptcha as BaseReCaptcha;
 use LogicException;
+
 use function config;
 use function debug_backtrace;
 use function max;

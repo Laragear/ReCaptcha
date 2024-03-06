@@ -8,8 +8,10 @@ use GuzzleHttp\Promise\FulfilledPromise;
 use GuzzleHttp\Psr7\Response as GuzzleResponse;
 use Illuminate\Http\Client\Response;
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
+
 use function json_encode;
 use function now;
+
 use const JSON_THROW_ON_ERROR;
 
 /**

@@ -43,7 +43,7 @@ return [
     |
     */
 
-    'hostname'         => env('RECAPTCHA_HOSTNAME'),
+    'hostname' => env('RECAPTCHA_HOSTNAME'),
     'apk_package_name' => env('RECAPTCHA_APK_PACKAGE_NAME'),
 
     /*
@@ -73,7 +73,7 @@ return [
 
     'remember' => [
         'enabled' => false,
-        'key'     => '_recaptcha',
+        'key' => '_recaptcha',
         'minutes' => 10,
     ],
 
@@ -107,19 +107,19 @@ return [
     'credentials' => [
         ReCaptcha::CHECKBOX => [
             'secret' => env('RECAPTCHA_CHECKBOX_SECRET', ReCaptcha::TEST_V2_SECRET),
-            'key'    => env('RECAPTCHA_CHECKBOX_KEY', ReCaptcha::TEST_V2_KEY),
+            'key' => env('RECAPTCHA_CHECKBOX_KEY', ReCaptcha::TEST_V2_KEY),
         ],
         ReCaptcha::INVISIBLE => [
             'secret' => env('RECAPTCHA_INVISIBLE_SECRET', ReCaptcha::TEST_V2_SECRET),
-            'key'    => env('RECAPTCHA_INVISIBLE_KEY', ReCaptcha::TEST_V2_KEY),
+            'key' => env('RECAPTCHA_INVISIBLE_KEY', ReCaptcha::TEST_V2_KEY),
         ],
         ReCaptcha::ANDROID => [
             'secret' => env('RECAPTCHA_ANDROID_SECRET', ReCaptcha::TEST_V2_SECRET),
-            'key'    => env('RECAPTCHA_ANDROID_KEY', ReCaptcha::TEST_V2_KEY),
+            'key' => env('RECAPTCHA_ANDROID_KEY', ReCaptcha::TEST_V2_KEY),
         ],
         ReCaptcha::SCORE => [
             'secret' => env('RECAPTCHA_SCORE_SECRET'),
-            'key'    => env('RECAPTCHA_SCORE_KEY'),
+            'key' => env('RECAPTCHA_SCORE_KEY'),
         ],
     ],
 ];

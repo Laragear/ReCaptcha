@@ -24,7 +24,7 @@ trait ValidatesResponse
         if (Arr::get($this->attributes, 'success') !== true) {
             throw $this->validationException([
                 $this->input => trans('recaptcha::validation.error', [
-                    'errors' => implode(', ', Arr::wrap($this->attributes['errors'] ?? [])),
+                    'errors' => implode(', ', (array) Arr::get($this->attributes, 'errors')),
                 ]),
             ]);
         }
@@ -38,6 +38,7 @@ trait ValidatesResponse
         }
 
         if (! empty($errors)) {
+            // @phpstan-ignore-next-line
             throw $this->validationException([$this->input => $errors]);
         }
     }

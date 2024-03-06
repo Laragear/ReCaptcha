@@ -29,8 +29,6 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
 
     /**
      * The data from the ReCaptcha response.
-     *
-     * @var array{success: bool, hostname: string, challenge_ts: int, apk_package_name: string, action: string, score: float, error_codes: string[]}
      */
     protected array $attributes = [];
 
@@ -94,8 +92,6 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
 
     /**
      * Returns the raw attributes of the response, bypassing the promise resolving.
-     *
-     * @return array{success: bool, hostname: string, challenge_ts: int, apk_package_name: string, action: string, score: float, error_codes: string[]}
      */
     public function getAttributes(): array
     {
@@ -114,8 +110,6 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
 
     /**
      * Convert the instance to an array.
-     *
-     * @return array{success: bool, hostname: string, challenge_ts: int, apk_package_name: string, action: string, score: float, error_codes: string[]}
      */
     public function toArray(): array
     {
@@ -126,8 +120,6 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
 
     /**
      * Convert the object into something JSON serializable.
-     *
-     * @return array{success: bool, hostname: string, challenge_ts: int, apk_package_name: string, action: string, score: float, error_codes: string[]}
      */
     public function jsonSerialize(): array
     {
