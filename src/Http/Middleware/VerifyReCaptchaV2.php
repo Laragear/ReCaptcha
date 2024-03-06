@@ -100,19 +100,12 @@ class VerifyReCaptchaV2
     /**
      * Stores the ReCaptcha remember expiration time in the session.
      */
-    protected function storeRememberInSession(string|int $offset): void
+    protected function storeRememberInSession(string $offset): void
     {
-        $offset = strtolower($offset);
-
-        if ($offset === 'null') {
-            $offset = $this->rememberMinutes();
-        }
-
-        $offset = match ($offset) {
-            INF, 'inf', 'infinite', 'forever' => INF,
-            default => now()->addMinutes($offset)->getTimestamp(),
-        };
-
-        session()->put($this->rememberKey(), $offset);
+        session()->put($this->rememberKey(), match (strtolower($offset)) {
+            'null' => $this->rememberMinutes(),
+            'inf', 'infinite', 'forever' => INF,
+            default => now()->addMinutes((int) $offset)->getTimestamp(),
+        });
     }
 }

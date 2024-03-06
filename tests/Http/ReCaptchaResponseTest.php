@@ -65,7 +65,7 @@ class ReCaptchaResponseTest extends TestCase
             new Response(
                 new GuzzleResponse(200, ['Content-type' => 'application/json'], json_encode([
                     'success' => true,
-                    'foo'     => 'bar',
+                    'foo' => 'bar',
                 ], JSON_THROW_ON_ERROR))
             )
         );
@@ -80,7 +80,7 @@ class ReCaptchaResponseTest extends TestCase
     {
         $response = $this->fulfilledResponse([
             'success' => true,
-            'foo'     => 'bar',
+            'foo' => 'bar',
         ]);
 
         static::assertTrue($response->isHuman());
@@ -90,8 +90,8 @@ class ReCaptchaResponseTest extends TestCase
     public function test_returns_carbon_of_challenge_ts(): void
     {
         $response = $this->fulfilledResponse([
-            'success'      => true,
-            'foo'          => 'bar',
+            'success' => true,
+            'foo' => 'bar',
             'challenge_ts' => ($now = now())->toIso8601ZuluString(),
         ]);
 
@@ -127,8 +127,8 @@ class ReCaptchaResponseTest extends TestCase
 
         $response = $this->fulfilledResponse([
             'success' => false,
-            'foo'     => 'bar',
-            'errors'  => ['quz', 'cougar'],
+            'foo' => 'bar',
+            'errors' => ['quz', 'cougar'],
         ]);
 
         try {
