@@ -7,11 +7,9 @@ use Illuminate\Contracts\Config\Repository as ConfigContract;
 use Illuminate\Http\Request;
 use Laragear\ReCaptcha\ReCaptcha;
 use LogicException;
-
 use function now;
 use function session;
 use function strtolower;
-
 use const INF;
 
 class VerifyReCaptchaV2
@@ -22,15 +20,11 @@ class VerifyReCaptchaV2
 
     /**
      * The alias of the middleware.
-     *
-     * @var string
      */
     public const ALIAS = 'recaptcha';
 
     /**
      * Create a new middleware instance.
-     *
-     * @param  \Illuminate\Contracts\Config\Repository  $config
      */
     public function __construct(protected ConfigContract $config)
     {
@@ -39,16 +33,6 @@ class VerifyReCaptchaV2
 
     /**
      * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string  $version
-     * @param  string  $remember
-     * @param  string  $input
-     * @param  string  ...$guards
-     * @return mixed
-     *
-     * @throws \Illuminate\Validation\ValidationException
      */
     public function handle(
         Request $request,
@@ -75,9 +59,6 @@ class VerifyReCaptchaV2
 
     /**
      * Ensure the developer has the correct version.
-     *
-     * @param  string  $input
-     * @return void
      */
     protected function ensureValidVersion(string $input): void
     {
@@ -90,10 +71,6 @@ class VerifyReCaptchaV2
 
     /**
      * Check if the ReCaptcha should be checked for this request.
-     *
-     * @param  string  $remember
-     * @param  array  $guards
-     * @return bool
      */
     protected function shouldCheckReCaptcha(string $remember, array $guards): bool
     {
@@ -110,9 +87,6 @@ class VerifyReCaptchaV2
 
     /**
      * Check if the "remember" should be checked.
-     *
-     * @param  string  $remember
-     * @return bool
      */
     protected function shouldCheckRemember(string $remember): bool
     {
@@ -125,9 +99,6 @@ class VerifyReCaptchaV2
 
     /**
      * Stores the ReCaptcha remember expiration time in the session.
-     *
-     * @param  string|int  $offset
-     * @return void
      */
     protected function storeRememberInSession(string|int $offset): void
     {

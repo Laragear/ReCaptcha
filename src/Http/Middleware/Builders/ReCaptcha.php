@@ -8,7 +8,6 @@ use Laragear\ReCaptcha\Http\Middleware\VerifyReCaptchaV2;
 use Laragear\ReCaptcha\Http\Middleware\VerifyReCaptchaV3;
 use Laragear\ReCaptcha\ReCaptcha as BaseReCaptcha;
 use LogicException;
-
 use function config;
 use function debug_backtrace;
 use function max;
@@ -19,13 +18,6 @@ class ReCaptcha
 {
     /**
      * Create a new middleware builder instance.
-     *
-     * @param  string  $version
-     * @param  string  $input
-     * @param  string  $threshold
-     * @param  string  $action
-     * @param  string  $remember
-     * @param  string[]  $guards
      */
     final public function __construct(
         protected string $version,
@@ -40,8 +32,6 @@ class ReCaptcha
 
     /**
      * Create a new helper instance for checkbox challenges.
-     *
-     * @return static
      */
     public static function checkbox(): static
     {
@@ -50,8 +40,6 @@ class ReCaptcha
 
     /**
      * Create a new helper instance for invisible challenges.
-     *
-     * @return static
      */
     public static function invisible(): static
     {
@@ -60,8 +48,6 @@ class ReCaptcha
 
     /**
      * Create a new helper instance for android challenges.
-     *
-     * @return static
      */
     public static function android(): static
     {
@@ -70,9 +56,6 @@ class ReCaptcha
 
     /**
      * Create a new helper instance for score challenges.
-     *
-     * @param  float|null  $threshold
-     * @return static
      */
     public static function score(float $threshold = null): static
     {
@@ -83,7 +66,6 @@ class ReCaptcha
     /**
      * Sets the input for the reCAPTCHA challenge on this route.
      *
-     * @param  string  $name
      * @return $this
      */
     public function input(string $name): static
@@ -96,7 +78,6 @@ class ReCaptcha
     /**
      * Show the challenge on non-authenticated users.
      *
-     * @param  string  ...$guards
      * @return $this
      */
     public function forGuests(string ...$guards): static
@@ -108,9 +89,6 @@ class ReCaptcha
 
     /**
      * Checking for a "remember" on this route.
-     *
-     * @param  int|null  $minutes
-     * @return static
      */
     public function remember(int $minutes = null): static
     {
@@ -137,8 +115,6 @@ class ReCaptcha
 
     /**
      * Bypass checking for a "remember" on this route.
-     *
-     * @return static
      */
     public function dontRemember(): static
     {
@@ -152,7 +128,6 @@ class ReCaptcha
     /**
      * Sets the threshold for the score-driven challenge.
      *
-     * @param  float  $threshold
      * @return $this
      */
     public function threshold(float $threshold): static
@@ -165,9 +140,8 @@ class ReCaptcha
     }
 
     /**
-     * Sets the action for the.
+     * Sets the action.
      *
-     * @param  string  $action
      * @return $this
      */
     public function action(string $action): static
@@ -181,9 +155,6 @@ class ReCaptcha
 
     /**
      * Throws an exception if this middleware version should be score or not.
-     *
-     * @param  bool  $score
-     * @return void
      */
     protected function ensureVersionIsCorrect(bool $score): void
     {
@@ -196,8 +167,6 @@ class ReCaptcha
 
     /**
      * Transforms the middleware helper into a string.
-     *
-     * @return string
      */
     public function toString(): string
     {
@@ -206,8 +175,6 @@ class ReCaptcha
 
     /**
      * Returns the string representation of the instance.
-     *
-     * @return string
      */
     public function __toString(): string
     {
@@ -227,7 +194,7 @@ class ReCaptcha
     /**
      * Returns the parameters as a collection.
      *
-     * @return \Illuminate\Support\Collection
+     * @return \Illuminate\Support\Collection<int, string>
      */
     protected function getBaseParameters(): Collection
     {

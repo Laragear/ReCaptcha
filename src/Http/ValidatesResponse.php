@@ -4,7 +4,6 @@ namespace Laragear\ReCaptcha\Http;
 
 use Illuminate\Support\Arr;
 use Illuminate\Validation\ValidationException;
-
 use function array_filter;
 use function back;
 use function config;
@@ -18,10 +17,6 @@ trait ValidatesResponse
 {
     /**
      * Validates the response based on previously set expectations.
-     *
-     * @return void
-     *
-     * @throws \Illuminate\Validation\ValidationException
      */
     public function validate(): void
     {
@@ -50,8 +45,7 @@ trait ValidatesResponse
     /**
      * Creates a new validation exceptions with messages.
      *
-     * @param  array  $messages
-     * @return \Illuminate\Validation\ValidationException
+     * @param  array<string, string>  $messages
      */
     protected function validationException(array $messages): ValidationException
     {
@@ -60,8 +54,6 @@ trait ValidatesResponse
 
     /**
      * Retrieve the expectations for the current response.
-     *
-     * @return array
      *
      * @internal
      */

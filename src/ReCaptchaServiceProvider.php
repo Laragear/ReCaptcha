@@ -23,8 +23,6 @@ class ReCaptchaServiceProvider extends ServiceProvider
 
     /**
      * Register the application services.
-     *
-     * @return void
      */
     public function register(): void
     {
@@ -39,9 +37,6 @@ class ReCaptchaServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap the application services.
-     *
-     * @param  \Illuminate\Routing\Router  $router
-     * @return void
      */
     public function boot(Router $router): void
     {

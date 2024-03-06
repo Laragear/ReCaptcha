@@ -8,10 +8,8 @@ use GuzzleHttp\Promise\FulfilledPromise;
 use GuzzleHttp\Psr7\Response as GuzzleResponse;
 use Illuminate\Http\Client\Response;
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
-
 use function json_encode;
 use function now;
-
 use const JSON_THROW_ON_ERROR;
 
 /**
@@ -21,8 +19,6 @@ class ReCaptchaFake extends ReCaptcha
 {
     /**
      * Score to fake.
-     *
-     * @var float|null
      */
     public ?float $score = null;
 
@@ -59,9 +55,6 @@ class ReCaptchaFake extends ReCaptcha
 
     /**
      * Adds a fake score to return as a ReCaptcha response.
-     *
-     * @param  float  $score
-     * @return void
      */
     public function fakeScore(float $score): void
     {
@@ -70,8 +63,6 @@ class ReCaptchaFake extends ReCaptcha
 
     /**
      * Makes a fake ReCaptcha response made by a robot with "0" score.
-     *
-     * @return void
      */
     public function fakeRobot(): void
     {
@@ -80,8 +71,6 @@ class ReCaptchaFake extends ReCaptcha
 
     /**
      * Makes a fake ReCaptcha response made by a human with "1.0" score.
-     *
-     * @return void
      */
     public function fakeHuman(): void
     {

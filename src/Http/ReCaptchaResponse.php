@@ -8,11 +8,9 @@ use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Carbon;
 use JsonSerializable;
-
 use function array_key_exists;
 use function json_encode;
 use function value;
-
 use const JSON_THROW_ON_ERROR;
 
 /**
@@ -32,16 +30,12 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
     /**
      * The data from the ReCaptcha response.
      *
-     * @var array
+     * @var array{success: bool, hostname: string, challenge_ts: int, apk_package_name: string, action: string, score: float, error_codes: string[]}
      */
     protected array $attributes = [];
 
     /**
      * Creates a new ReCaptcha Response Container.
-     *
-     * @param  \GuzzleHttp\Promise\PromiseInterface  $promise
-     * @param  string  $input
-     * @param  string|null  $expectedAction
      */
     public function __construct(
         protected PromiseInterface $promise,
@@ -56,8 +50,6 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
 
     /**
      * Checks if the response has been resolved.
-     *
-     * @return bool
      */
     public function isResolved(): bool
     {
@@ -66,8 +58,6 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
 
     /**
      * Checks if the response has yet to be resolved.
-     *
-     * @return bool
      */
     public function isPending(): bool
     {
@@ -76,8 +66,6 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
 
     /**
      * Returns the timestamp of the challenge as a Carbon instance.
-     *
-     * @return \Illuminate\Support\Carbon
      */
     public function carbon(): Carbon
     {
@@ -98,8 +86,6 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
 
     /**
      * Terminates the ReCaptcha response if still pending.
-     *
-     * @return void
      */
     public function terminate(): void
     {
@@ -109,7 +95,7 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
     /**
      * Returns the raw attributes of the response, bypassing the promise resolving.
      *
-     * @return array
+     * @return array{success: bool, hostname: string, challenge_ts: int, apk_package_name: string, action: string, score: float, error_codes: string[]}
      */
     public function getAttributes(): array
     {
@@ -118,10 +104,6 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
 
     /**
      * Get an attribute from the instance.
-     *
-     * @param  string  $key
-     * @param  mixed  $default
-     * @return mixed
      */
     public function get(string $key, mixed $default = null): mixed
     {
@@ -133,7 +115,7 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
     /**
      * Convert the instance to an array.
      *
-     * @return array
+     * @return array{success: bool, hostname: string, challenge_ts: int, apk_package_name: string, action: string, score: float, error_codes: string[]}
      */
     public function toArray(): array
     {
@@ -145,7 +127,7 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
     /**
      * Convert the object into something JSON serializable.
      *
-     * @return array
+     * @return array{success: bool, hostname: string, challenge_ts: int, apk_package_name: string, action: string, score: float, error_codes: string[]}
      */
     public function jsonSerialize(): array
     {
@@ -156,9 +138,6 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
      * Convert the instance to JSON.
      *
      * @param  int  $options
-     * @return string
-     *
-     * @throws \JsonException
      */
     public function toJson($options = 0): string
     {
@@ -167,9 +146,6 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
 
     /**
      * Dynamically retrieve the value of an attribute.
-     *
-     * @param  string  $key
-     * @return mixed
      */
     public function __get(string $key): mixed
     {
@@ -178,10 +154,6 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
 
     /**
      * Dynamically set the value of an attribute.
-     *
-     * @param  string  $key
-     * @param  mixed  $value
-     * @return void
      */
     public function __set(string $key, mixed $value): void
     {
@@ -192,9 +164,6 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
 
     /**
      * Dynamically check if an attribute is set.
-     *
-     * @param  string  $key
-     * @return bool
      */
     public function __isset(string $key): bool
     {
@@ -205,9 +174,6 @@ class ReCaptchaResponse implements JsonSerializable, Arrayable, Jsonable
 
     /**
      * Dynamically unset an attribute.
-     *
-     * @param  string  $key
-     * @return void
      */
     public function __unset(string $key): void
     {

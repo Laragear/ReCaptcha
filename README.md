@@ -4,7 +4,7 @@
 [![Codecov coverage](https://codecov.io/gh/Laragear/ReCaptcha/branch/1.x/graph/badge.svg?token=5U6BJUEA4T)](https://codecov.io/gh/Laragear/ReCaptcha)
 [![Maintainability](https://api.codeclimate.com/v1/badges/b889decbc6af6a1cfd3a/maintainability)](https://codeclimate.com/github/Laragear/ReCaptcha/maintainability)
 [![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=Laragear_ReCaptcha&metric=alert_status)](https://sonarcloud.io/dashboard?id=Laragear_ReCaptcha)
-[![Laravel Octane Compatibility](https://img.shields.io/badge/Laravel%20Octane-Compatible-success?style=flat&logo=laravel)](https://laravel.com/docs/9.x/octane#introduction)
+[![Laravel Octane Compatibility](https://img.shields.io/badge/Laravel%20Octane-Compatible-success?style=flat&logo=laravel)](https://laravel.com/docs/11.x/octane#introduction)
 
 Integrate reCAPTCHA using **async HTTP/2**, making your app **fast** with a few lines.
 
@@ -25,8 +25,7 @@ Your support allows me to keep this package free, up-to-date and maintainable. A
 
 ## Requirements
 
-* PHP 8.0 or later
-* Laravel 9, 10 or later
+* Laravel 10 or later
 
 ## Installation
 
@@ -553,4 +552,4 @@ If you discover any security related issues, please email darkghosthunter@gmail.
 
 This specific package version is licensed under the terms of the [MIT License](LICENSE.md), at time of publishing.
 
-[Laravel](https://laravel.com) is a Trademark of [Taylor Otwell](https://github.com/TaylorOtwell/). Copyright © 2011-2023 Laravel LLC.
+[Laravel](https://laravel.com) is a Trademark of [Taylor Otwell](https://github.com/TaylorOtwell/). Copyright © 2011-2024 Laravel LLC.

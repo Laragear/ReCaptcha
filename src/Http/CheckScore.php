@@ -6,16 +6,11 @@ trait CheckScore
 {
     /**
      * The threshold to compare score-driven responses.
-     *
-     * @var float
      */
     protected float $threshold = 1.0;
 
     /**
      * Sets the threshold to compare score-driven responses.
-     *
-     * @param  float  $threshold
-     * @return $this
      */
     public function setThreshold(float $threshold): static
     {

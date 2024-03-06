@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Laragear\ReCaptcha\Facades\ReCaptcha as ReCaptchaFacade;
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
 use Laragear\ReCaptcha\ReCaptcha;
-
 use function app;
 
 class VerifyReCaptchaV3
@@ -18,15 +17,11 @@ class VerifyReCaptchaV3
 
     /**
      * The alias of the middleware.
-     *
-     * @var string
      */
     public const ALIAS = 'recaptcha.score';
 
     /**
      * Create a new middleware instance.
-     *
-     * @param  \Illuminate\Contracts\Config\Repository  $config
      */
     public function __construct(protected ConfigContract $config)
     {
@@ -35,16 +30,6 @@ class VerifyReCaptchaV3
 
     /**
      * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string|null  $threshold
-     * @param  string|null  $action
-     * @param  string  $input
-     * @param  string  ...$guards
-     * @return mixed
-     *
-     * @throws \Illuminate\Validation\ValidationException
      */
     public function handle(
         Request $request,
@@ -72,9 +57,6 @@ class VerifyReCaptchaV3
 
     /**
      * Fakes a score ReCaptcha response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return void
      */
     protected function fakeResponseScore(Request $request): void
     {
@@ -89,9 +71,6 @@ class VerifyReCaptchaV3
 
     /**
      * Normalize the threshold string, or returns the default.
-     *
-     * @param  string|null  $threshold
-     * @return float
      */
     protected function normalizeThreshold(?string $threshold): float
     {
@@ -100,9 +79,6 @@ class VerifyReCaptchaV3
 
     /**
      * Normalizes the action name, or returns null.
-     *
-     * @param  null|string  $action
-     * @return null|string
      */
     protected function normalizeAction(?string $action): ?string
     {
@@ -111,8 +87,6 @@ class VerifyReCaptchaV3
 
     /**
      * Handle tasks after the response has been sent to the browser.
-     *
-     * @return void
      */
     public function terminate(): void
     {

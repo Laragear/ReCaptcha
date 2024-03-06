@@ -9,8 +9,7 @@ trait ChecksGuards
     /**
      * Checks if the user is not authenticated on the given guards.
      *
-     * @param  array  $guards
-     * @return bool
+     * @param  string[]  $guards
      */
     protected function isGuest(array $guards): bool
     {
@@ -32,8 +31,7 @@ trait ChecksGuards
     /**
      * Checks if the user is authenticated on the given guards.
      *
-     * @param  array  $guards
-     * @return bool
+     * @param  string[]  $guards
      */
     protected function isAuth(array $guards): bool
     {

@@ -9,8 +9,6 @@ trait ChecksRemember
 {
     /**
      * Check if the request "remember" should be checked.
-     *
-     * @return bool
      */
     protected function hasRemember(): bool
     {
@@ -26,8 +24,6 @@ trait ChecksRemember
 
     /**
      * Return the minutes time to remember the challenge.
-     *
-     * @return int|float
      */
     protected function rememberMinutes(): int|float
     {
@@ -36,8 +32,6 @@ trait ChecksRemember
 
     /**
      * Check if the reCAPTCHA challenge remembering is enabled.
-     *
-     * @return bool
      */
     protected function shouldRemember(): bool
     {
@@ -46,8 +40,6 @@ trait ChecksRemember
 
     /**
      * Return the remember key.
-     *
-     * @return string
      */
     protected function rememberKey(): string
     {

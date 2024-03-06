@@ -3,7 +3,6 @@
 namespace Laragear\ReCaptcha;
 
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
-
 use function app;
 
 /**
@@ -13,8 +12,6 @@ class RequestMacro
 {
     /**
      * Check if the ReCaptcha response is equal or above threshold score.
-     *
-     * @return bool
      */
     public static function isHuman(): bool
     {
@@ -23,8 +20,6 @@ class RequestMacro
 
     /**
      * Check if the ReCaptcha response is below threshold score.
-     *
-     * @return bool
      */
     public static function isRobot(): bool
     {

@@ -3,11 +3,10 @@
 namespace Laragear\ReCaptcha;
 
 use GuzzleHttp\Promise\PromiseInterface;
-use Illuminate\Contracts\Config\Repository;
+use Illuminate\Contracts\Config\Repository as ConfigContract;
 use Illuminate\Http\Client\Factory;
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
 use LogicException;
-
 use function app;
 
 class ReCaptcha
@@ -20,52 +19,34 @@ class ReCaptcha
 
     /**
      * reCAPTCHA v2 secret for testing on "localhost".
-     *
-     * @var string
      */
     public const TEST_V2_SECRET = '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe';
 
     /**
      * reCAPTCHA v2 site key for testing on "localhost".
-     *
-     * @var string
      */
     public const TEST_V2_KEY = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
 
     /**
      * The URL where the ReCaptcha challenge should be verified.
-     *
-     * @var string
      */
     public const SERVER_ENDPOINT = 'https://www.google.com/recaptcha/api/siteverify';
 
     /**
      * The name of the input for a reCAPTCHA frontend response.
-     *
-     * @var string
      */
     public const INPUT = 'g-recaptcha-response';
 
     /**
      * Create a new ReCaptcha instance.
-     *
-     * @param  \Illuminate\Http\Client\Factory  $http
-     * @param  \Illuminate\Contracts\Config\Repository  $config
      */
-    public function __construct(protected Factory $http, protected Repository $config)
+    public function __construct(protected Factory $http, protected ConfigContract $config)
     {
         //
     }
 
     /**
      * Resolves a ReCaptcha challenge.
-     *
-     * @param  string|null  $token
-     * @param  string  $ip
-     * @param  string  $version
-     * @param  string  $input
-     * @param  string|null  $action
-     * @return \Laragear\ReCaptcha\Http\ReCaptchaResponse
      */
     public function getChallenge(
         ?string $token,
@@ -79,8 +60,6 @@ class ReCaptcha
 
     /**
      * Check if the response was resolved.
-     *
-     * @return bool
      */
     public function hasResponse(): bool
     {
@@ -91,10 +70,6 @@ class ReCaptcha
      * Returns the reCAPTCHA Response.
      *
      * An exception will be thrown when the response doesn't exist.
-     *
-     * @return \Laragear\ReCaptcha\Http\ReCaptchaResponse
-     *
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function response(): ReCaptchaResponse
     {
@@ -103,11 +78,6 @@ class ReCaptcha
 
     /**
      * Creates a Pending Request or a Promise.
-     *
-     * @param  string  $challenge
-     * @param  string  $ip
-     * @param  string  $version
-     * @return \GuzzleHttp\Promise\PromiseInterface
      */
     protected function request(string $challenge, string $ip, string $version): PromiseInterface
     {
@@ -125,9 +95,6 @@ class ReCaptcha
 
     /**
      * Sets the correct credentials to use to retrieve the challenge results.
-     *
-     * @param  string  $version
-     * @return string
      */
     protected function secret(string $version): string
     {

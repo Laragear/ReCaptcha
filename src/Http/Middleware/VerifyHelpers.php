@@ -7,7 +7,6 @@ use Illuminate\Validation\ValidationException;
 use Laragear\ReCaptcha\Facades\ReCaptcha as ReCaptchaFacade;
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
 use Laragear\ReCaptcha\ReCaptcha;
-
 use function app;
 use function back;
 use function strtolower;
@@ -20,9 +19,6 @@ trait VerifyHelpers
 {
     /**
      * Normalize the input name.
-     *
-     * @param  string  $input
-     * @return string
      */
     protected function normalizeInput(string $input): string
     {
@@ -31,8 +27,6 @@ trait VerifyHelpers
 
     /**
      * Check if ReCaptcha is enabled globally.
-     *
-     * @return bool
      */
     protected function isDisabled(): bool
     {
@@ -41,8 +35,6 @@ trait VerifyHelpers
 
     /**
      * Check if the application is running under unit testing.
-     *
-     * @return bool
      */
     protected function isTesting(): bool
     {
@@ -51,8 +43,6 @@ trait VerifyHelpers
 
     /**
      * Check if the reCAPTCHA services should be faked.
-     *
-     * @return bool
      */
     protected function isFaking(): bool
     {
@@ -61,12 +51,6 @@ trait VerifyHelpers
 
     /**
      * Validate if this Request has the ReCaptcha challenge string.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string  $input
-     * @return void
-     *
-     * @throws \Illuminate\Validation\ValidationException
      */
     protected function ensureChallengeIsPresent(Request $request, string $input): void
     {
@@ -79,13 +63,6 @@ trait VerifyHelpers
 
     /**
      * Retrieve the response from reCAPTCHA servers.
-     *
-     * @param  string|null  $token
-     * @param  string  $ip
-     * @param  string  $version
-     * @param  string  $input
-     * @param  string|null  $action
-     * @return \Laragear\ReCaptcha\Http\ReCaptchaResponse
      */
     protected function saveResponse(
         ?string $token,

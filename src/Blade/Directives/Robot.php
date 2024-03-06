@@ -10,8 +10,6 @@ class Robot
 {
     /**
      * Check if the ReCaptcha challenge was remembered and not expired.
-     *
-     * @return bool
      */
     public static function directive(): bool
     {

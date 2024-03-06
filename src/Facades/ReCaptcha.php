@@ -15,8 +15,6 @@ class ReCaptcha extends Facade
 {
     /**
      * Get the registered name of the component.
-     *
-     * @return string
      */
     protected static function getFacadeAccessor(): string
     {
@@ -25,8 +23,6 @@ class ReCaptcha extends Facade
 
     /**
      * Returns a new ReCaptcha service to fake responses.
-     *
-     * @return \Laragear\ReCaptcha\ReCaptchaFake
      */
     public static function fake(): ReCaptchaFake
     {
@@ -43,9 +39,6 @@ class ReCaptcha extends Facade
 
     /**
      * Makes the fake ReCaptcha response with a fake score.
-     *
-     * @param  float  $score
-     * @return void
      */
     public static function fakeScore(float $score): void
     {
@@ -54,8 +47,6 @@ class ReCaptcha extends Facade
 
     /**
      * Makes a fake ReCaptcha response made by a robot with "0" score.
-     *
-     * @return void
      */
     public static function fakeRobot(): void
     {
@@ -64,8 +55,6 @@ class ReCaptcha extends Facade
 
     /**
      * Makes a fake ReCaptcha response made by a human with "1.0" score.
-     *
-     * @return void
      */
     public static function fakeHuman(): void
     {
