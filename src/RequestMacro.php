@@ -3,6 +3,7 @@
 namespace Laragear\ReCaptcha;
 
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
+
 use function app;
 
 /**

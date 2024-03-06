@@ -7,6 +7,7 @@ use Illuminate\Contracts\Config\Repository as ConfigContract;
 use Illuminate\Http\Client\Factory;
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
 use LogicException;
+
 use function app;
 
 class ReCaptcha
@@ -87,7 +88,7 @@ class ReCaptcha
             ->async()
             ->withOptions($this->config->get('recaptcha.client'))
             ->post(static::SERVER_ENDPOINT, [
-                'secret'   => $this->secret($version),
+                'secret' => $this->secret($version),
                 'response' => $challenge,
                 'remoteip' => $ip,
             ]);
