@@ -7,9 +7,11 @@ use Illuminate\Contracts\Config\Repository as ConfigContract;
 use Illuminate\Http\Request;
 use Laragear\ReCaptcha\ReCaptcha;
 use LogicException;
+
 use function now;
 use function session;
 use function strtolower;
+
 use const INF;
 
 class VerifyReCaptchaV2

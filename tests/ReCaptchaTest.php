@@ -23,7 +23,7 @@ class ReCaptchaTest extends TestCase
             ->with(
                 ReCaptcha::SERVER_ENDPOINT,
                 [
-                    'secret'   => ReCaptcha::TEST_V2_SECRET,
+                    'secret' => ReCaptcha::TEST_V2_SECRET,
                     'response' => 'token',
                     'remoteip' => '127.0.0.1',
                 ]
@@ -32,7 +32,7 @@ class ReCaptchaTest extends TestCase
             ->andReturn(
                 $this->fulfilledPromise([
                     'success' => true,
-                    'foo'     => 'bar',
+                    'foo' => 'bar',
                 ])
             );
 
@@ -67,7 +67,7 @@ class ReCaptchaTest extends TestCase
             ->with(
                 ReCaptcha::SERVER_ENDPOINT,
                 [
-                    'secret'   => ReCaptcha::TEST_V2_SECRET,
+                    'secret' => ReCaptcha::TEST_V2_SECRET,
                     'response' => 'token',
                     'remoteip' => '127.0.0.1',
                 ]
@@ -76,7 +76,7 @@ class ReCaptchaTest extends TestCase
             ->andReturn(
                 $this->fulfilledPromise([
                     'success' => true,
-                    'foo'     => 'bar',
+                    'foo' => 'bar',
                 ])
             );
 
@@ -105,9 +105,9 @@ class ReCaptchaTest extends TestCase
     public function test_uses_v2_custom_credentials(): void
     {
         $this->app->make('config')->set('recaptcha.credentials', [
-            'checkbox'  => ['secret' => 'secret-checkbox'],
+            'checkbox' => ['secret' => 'secret-checkbox'],
             'invisible' => ['secret' => 'secret-invisible'],
-            'android'   => ['secret' => 'secret-android'],
+            'android' => ['secret' => 'secret-android'],
         ]);
 
         $mock = $this->mock(Factory::class);
@@ -120,7 +120,7 @@ class ReCaptchaTest extends TestCase
             ->with(
                 ReCaptcha::SERVER_ENDPOINT,
                 [
-                    'secret'   => 'secret-checkbox',
+                    'secret' => 'secret-checkbox',
                     'response' => 'token',
                     'remoteip' => '127.0.0.1',
                 ]
@@ -129,7 +129,7 @@ class ReCaptchaTest extends TestCase
             ->andReturn(
                 $this->fulfilledPromise([
                     'success' => true,
-                    'foo'     => 'bar',
+                    'foo' => 'bar',
                 ])
             );
 
@@ -137,7 +137,7 @@ class ReCaptchaTest extends TestCase
             ->with(
                 ReCaptcha::SERVER_ENDPOINT,
                 [
-                    'secret'   => 'secret-invisible',
+                    'secret' => 'secret-invisible',
                     'response' => 'token',
                     'remoteip' => '127.0.0.1',
                 ]
@@ -146,7 +146,7 @@ class ReCaptchaTest extends TestCase
             ->andReturn(
                 $this->fulfilledPromise([
                     'success' => true,
-                    'foo'     => 'bar',
+                    'foo' => 'bar',
                 ])
             );
 
@@ -154,7 +154,7 @@ class ReCaptchaTest extends TestCase
             ->with(
                 ReCaptcha::SERVER_ENDPOINT,
                 [
-                    'secret'   => 'secret-android',
+                    'secret' => 'secret-android',
                     'response' => 'token',
                     'remoteip' => '127.0.0.1',
                 ]
@@ -163,7 +163,7 @@ class ReCaptchaTest extends TestCase
             ->andReturn(
                 $this->fulfilledPromise([
                     'success' => true,
-                    'foo'     => 'bar',
+                    'foo' => 'bar',
                 ])
             );
 
@@ -210,7 +210,7 @@ class ReCaptchaTest extends TestCase
         $mock->expects('withOptions')->with(['version' => 2.0])->once()->andReturnSelf();
         $mock->expects('post')
             ->with(ReCaptcha::SERVER_ENDPOINT, [
-                'secret'   => 'secret',
+                'secret' => 'secret',
                 'response' => 'token',
                 'remoteip' => '127.0.0.1',
             ])
@@ -218,8 +218,8 @@ class ReCaptchaTest extends TestCase
             ->andReturn(
                 $this->fulfilledPromise([
                     'success' => true,
-                    'score'   => 0.5,
-                    'foo'     => 'bar',
+                    'score' => 0.5,
+                    'foo' => 'bar',
                 ])
             );
 
@@ -247,7 +247,7 @@ class ReCaptchaTest extends TestCase
         $mock->expects('withOptions')->with(['foo' => 'bar'])->once()->andReturnSelf();
         $mock->expects('post')
             ->with(ReCaptcha::SERVER_ENDPOINT, [
-                'secret'   => 'secret',
+                'secret' => 'secret',
                 'response' => 'token',
                 'remoteip' => '127.0.0.1',
             ])

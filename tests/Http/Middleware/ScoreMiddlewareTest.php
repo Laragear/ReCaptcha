@@ -39,12 +39,12 @@ class ScoreMiddlewareTest extends TestCase
             ->assertOk()
             ->assertExactJson(
                 [
-                    'success'          => true,
-                    'score'            => 1,
-                    'action'           => null,
-                    'hostname'         => null,
+                    'success' => true,
+                    'score' => 1,
+                    'action' => null,
+                    'hostname' => null,
                     'apk_package_name' => null,
-                    'challenge_ts'     => now()->toAtomString(),
+                    'challenge_ts' => now()->toAtomString(),
                 ]
             );
     }
@@ -60,12 +60,12 @@ class ScoreMiddlewareTest extends TestCase
             ->assertOk()
             ->assertExactJson(
                 [
-                    'success'          => true,
-                    'score'            => 0,
-                    'action'           => null,
-                    'hostname'         => null,
+                    'success' => true,
+                    'score' => 0,
+                    'action' => null,
+                    'hostname' => null,
                     'apk_package_name' => null,
-                    'challenge_ts'     => now()->toAtomString(),
+                    'challenge_ts' => now()->toAtomString(),
                 ]
             );
     }
@@ -104,7 +104,7 @@ class ScoreMiddlewareTest extends TestCase
             ->assertOk()
             ->assertJsonFragment([
                 'success' => true,
-                'score'   => 1.0,
+                'score' => 1.0,
             ]);
 
         static::assertInstanceOf(ReCaptchaFake::class, $this->app->make(ReCaptcha::class));
@@ -118,8 +118,8 @@ class ScoreMiddlewareTest extends TestCase
             ->andReturn(
                 $this->fulfilledResponse([
                     'success' => true,
-                    'score'   => 0.5,
-                    'foo'     => 'bar',
+                    'score' => 0.5,
+                    'foo' => 'bar',
                 ])
             );
 
@@ -127,8 +127,8 @@ class ScoreMiddlewareTest extends TestCase
             ->assertOk()
             ->assertExactJson([
                 'success' => true,
-                'score'   => 0.5,
-                'foo'     => 'bar',
+                'score' => 0.5,
+                'foo' => 'bar',
             ]);
     }
 
@@ -437,7 +437,7 @@ class ScoreMiddlewareTest extends TestCase
             ->with(
                 ReCaptcha::SERVER_ENDPOINT,
                 [
-                    'secret'   => 'secret',
+                    'secret' => 'secret',
                     'response' => 'token',
                     'remoteip' => '127.0.0.1',
                 ]
@@ -446,7 +446,7 @@ class ScoreMiddlewareTest extends TestCase
             ->andReturn(
                 $this->fulfilledPromise([
                     'success' => true,
-                    'score'   => 0.5,
+                    'score' => 0.5,
                 ])
             );
 

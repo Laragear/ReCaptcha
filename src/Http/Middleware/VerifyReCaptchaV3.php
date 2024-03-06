@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Laragear\ReCaptcha\Facades\ReCaptcha as ReCaptchaFacade;
 use Laragear\ReCaptcha\Http\ReCaptchaResponse;
 use Laragear\ReCaptcha\ReCaptcha;
+
 use function app;
 
 class VerifyReCaptchaV3
