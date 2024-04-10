@@ -18,7 +18,7 @@ class ReCaptchaTest extends TestCase
 
         $mock->expects('asForm')->withNoArgs()->once()->andReturnSelf();
         $mock->expects('async')->withNoArgs()->once()->andReturnSelf();
-        $mock->expects('withOptions')->with(['version' => 2.0])->once()->andReturnSelf();
+        $mock->expects('withOptions')->with(['version' => 3.0])->once()->andReturnSelf();
         $mock->expects('post')
             ->with(
                 ReCaptcha::SERVER_ENDPOINT,
@@ -62,7 +62,7 @@ class ReCaptchaTest extends TestCase
 
         $mock->expects('asForm')->withNoArgs()->times(3)->andReturnSelf();
         $mock->expects('async')->withNoArgs()->times(3)->andReturnSelf();
-        $mock->expects('withOptions')->with(['version' => 2.0])->times(3)->andReturnSelf();
+        $mock->expects('withOptions')->with(['version' => 3.0])->times(3)->andReturnSelf();
         $mock->expects('post')
             ->with(
                 ReCaptcha::SERVER_ENDPOINT,
@@ -114,7 +114,7 @@ class ReCaptchaTest extends TestCase
 
         $mock->expects('asForm')->withNoArgs()->times(3)->andReturnSelf();
         $mock->expects('async')->withNoArgs()->times(3)->andReturnSelf();
-        $mock->expects('withOptions')->with(['version' => 2.0])->times(3)->andReturnSelf();
+        $mock->expects('withOptions')->with(['version' => 3.0])->times(3)->andReturnSelf();
 
         $mock->expects('post')
             ->with(
@@ -207,7 +207,7 @@ class ReCaptchaTest extends TestCase
 
         $mock->expects('asForm')->withNoArgs()->once()->andReturnSelf();
         $mock->expects('async')->withNoArgs()->once()->andReturnSelf();
-        $mock->expects('withOptions')->with(['version' => 2.0])->once()->andReturnSelf();
+        $mock->expects('withOptions')->with(['version' => 3.0])->once()->andReturnSelf();
         $mock->expects('post')
             ->with(ReCaptcha::SERVER_ENDPOINT, [
                 'secret' => 'secret',

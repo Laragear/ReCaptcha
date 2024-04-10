@@ -6,7 +6,7 @@
 [![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=Laragear_ReCaptcha&metric=alert_status)](https://sonarcloud.io/dashboard?id=Laragear_ReCaptcha)
 [![Laravel Octane Compatibility](https://img.shields.io/badge/Laravel%20Octane-Compatible-success?style=flat&logo=laravel)](https://laravel.com/docs/11.x/octane#introduction)
 
-Integrate reCAPTCHA using **async HTTP/2**, making your app **fast** with a few lines.
+Integrate reCAPTCHA using **async HTTP/3**, making your app **fast** with a few lines.
 
 ```php
 use Illuminate\Support\Facades\Route;
@@ -449,14 +449,14 @@ This also control how many minutes to set the "remember". You can set `INF` cons
 ```php
 return [
     'client' => [
-        'version' => 2.0,
+        'version' => 3.0,
     ],
 ];
 ```
 
 This array sets the options for the outgoing request to reCAPTCHA servers. [This is handled by Guzzle](https://docs.guzzlephp.org/en/stable/request-options.html), which in turn will pass it to the underlying transport. Depending on your system, it will probably be cURL.
 
-By default, it instructs Guzzle to use HTTP/2 whenever possible.
+By default, it instructs Guzzle to use HTTP/3 whenever possible.
 
 ### Credentials
 
@@ -554,9 +554,11 @@ The file gets published into the `.stubs` folder of your project, while the meta
 
 There should be no problems using this package with Laravel Octane as intended.
 
-## HTTP/3
+## HTTP/3 and cURL
 
-Currently, HTTP/3 is [still on draft state](https://datatracker.ietf.org/doc/draft-ietf-quic-http/). Until it's [Internet Standard](https://en.wikipedia.org/wiki/Internet_Standard), cURL and Guzzle and reCAPTCHA servers must implement the finished state of the protocol, which as of today is still a moving target.
+To use HTTP/3, [ensure you're using PHP 8.2 or later](https://php.watch/articles/php-curl-http3). cURL version  [7.66](https://curl.se/changes.html#7_66_0) supports HTTP/3, and latest PHP 8.2 uses version 7.85.
+
+For more information about checking if your platform can make HTTP/3 requests, check this [PHP Watch article](https://php.watch/articles/php-curl-http3).
 
 ## Security
 
