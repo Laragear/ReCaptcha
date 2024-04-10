@@ -14,7 +14,6 @@ use Laragear\ReCaptcha\ReCaptcha;
 use Laragear\ReCaptcha\ReCaptchaFake;
 use Tests\CreatesFulfilledResponse;
 use Tests\TestCase;
-
 use function now;
 
 class ScoreMiddlewareTest extends TestCase
@@ -432,7 +431,7 @@ class ScoreMiddlewareTest extends TestCase
 
         $mock->expects('async')->withNoArgs()->times(4)->andReturnSelf();
         $mock->expects('asForm')->withNoArgs()->times(4)->andReturnSelf();
-        $mock->expects('withOptions')->with(['version' => 2.0])->times(4)->andReturnSelf();
+        $mock->expects('withOptions')->with(['version' => 3.0])->times(4)->andReturnSelf();
         $mock->expects('post')
             ->with(
                 ReCaptcha::SERVER_ENDPOINT,
