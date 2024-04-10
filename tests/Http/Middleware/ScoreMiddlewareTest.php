@@ -14,6 +14,7 @@ use Laragear\ReCaptcha\ReCaptcha;
 use Laragear\ReCaptcha\ReCaptchaFake;
 use Tests\CreatesFulfilledResponse;
 use Tests\TestCase;
+
 use function now;
 
 class ScoreMiddlewareTest extends TestCase
