@@ -449,7 +449,7 @@ This also control how many minutes to set the "remember". You can set `INF` cons
 ```php
 return [
     'client' => [
-        'version' => 4.0,
+        'version' => 3.0,
     ],
 ];
 ```
