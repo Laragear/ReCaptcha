@@ -556,7 +556,7 @@ There should be no problems using this package with Laravel Octane as intended.
 
 ## HTTP/3 and cURL
 
-To use HTTP/3, [ensure you're using PHP 8.2 or later](https://php.watch/articles/php-curl-http3). cURL version  [7.83.0](https://curl.se/changes.html#7_83_0) supports (stable) HTTP/3, and latest PHP 8.2 uses version 7.85.
+To use HTTP/3, [ensure you're using PHP 8.2 or later](https://php.watch/articles/php-curl-http3). cURL version  [7.66](https://curl.se/changes.html#7_66_0) supports HTTP/3, and latest PHP 8.2 uses version 7.85.
 
 For more information about checking if your platform can make HTTP/3 requests, check this [PHP Watch article](https://php.watch/articles/php-curl-http3).
 
