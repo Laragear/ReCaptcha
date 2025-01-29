@@ -7,7 +7,7 @@ use Laragear\ReCaptcha\ReCaptchaFake;
 
 /**
  * @method static bool hasResponse()
- * @method static \Laragear\ReCaptcha\Http\ReCaptchaResponse getChallenge(?string $token, string $ip, string $version, string $input, string $action = null)
+ * @method static \Laragear\ReCaptcha\Http\ReCaptchaResponse getChallenge(?string $token, string $ip, string $version, string $input, string|null $action = null)
  * @method static \Laragear\ReCaptcha\Http\ReCaptchaResponse response()
  * @method static \Laragear\ReCaptcha\ReCaptcha|\Laragear\ReCaptcha\ReCaptchaFake getFacadeRoot()
  */

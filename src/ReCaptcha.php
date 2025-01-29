@@ -54,7 +54,7 @@ class ReCaptcha
         string $ip,
         string $version,
         string $input,
-        string $action = null,
+        ?string $action = null,
     ): ReCaptchaResponse {
         return new ReCaptchaResponse($this->request($token, $ip, $version), $input, $action);
     }

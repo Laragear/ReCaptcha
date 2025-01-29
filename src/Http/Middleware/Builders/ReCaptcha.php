@@ -58,7 +58,7 @@ class ReCaptcha
     /**
      * Create a new helper instance for score challenges.
      */
-    public static function score(float $threshold = null): static
+    public static function score(?float $threshold = null): static
     {
         return (new static(BaseReCaptcha::SCORE))
             ->threshold($threshold ?? config('recaptcha.threshold', 0.5));
@@ -91,7 +91,7 @@ class ReCaptcha
     /**
      * Checking for a "remember" on this route.
      */
-    public function remember(int $minutes = null): static
+    public function remember(?int $minutes = null): static
     {
         $this->ensureVersionIsCorrect(true);
 

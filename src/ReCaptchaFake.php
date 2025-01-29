@@ -32,7 +32,7 @@ class ReCaptchaFake extends ReCaptcha
         string $ip,
         string $version,
         string $input,
-        string $action = null,
+        ?string $action = null,
     ): ReCaptchaResponse {
         return new ReCaptchaResponse(
             new FulfilledPromise(
