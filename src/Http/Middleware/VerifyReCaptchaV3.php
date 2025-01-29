@@ -35,8 +35,8 @@ class VerifyReCaptchaV3
     public function handle(
         Request $request,
         Closure $next,
-        string $threshold = null,
-        string $action = null,
+        ?string $threshold = null,
+        ?string $action = null,
         string $input = ReCaptcha::INPUT,
         string ...$guards,
     ): mixed {
