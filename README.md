@@ -1,8 +1,8 @@
 # Abandoned for [Laragear Turnstile](https://github.com/Laragear/Turnstile)
 
-Due to Google reCAPTCHA becoming a paid service with only 1,000 requests, this package has been abandoned.
+Due to Google reCAPTCHA becoming a [paid service](https://cloud.google.com/recaptcha/docs/compare-tiers) with only 1,000 free _assessments_, this package has been abandoned.
 
-If you need a replacement for this library using other service, you can use [Laragear Turnstile](https://github.com/Laragear/Turnstile), a new package developed for Cloudflare Turnstile which is far less abrasive than Google reCAPTCHA.
+If you need a replacement for this library using other service, you can use [Laragear Turnstile](https://github.com/Laragear/Turnstile), a new Laravel package developed for [Cloudflare Turnstile](https://www.cloudflare.com/application-services/products/turnstile/) which is far less abrasive than Google reCAPTCHA and with unlimited requests.
 
 ---
 
