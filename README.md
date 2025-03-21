@@ -1,3 +1,11 @@
+# Abandoned for [Laragear Turnstile](https://github.com/Laragear/Turnstile)
+
+Due to Google reCAPTCHA becoming a paid service with only 1,000 requests, this package has been abandoned.
+
+If you need a replacement for this library using other service, you can use [Laragear Turnstile](https://github.com/Laragear/Turnstile), a new package developed for Cloudflare Turnstile which is far less abrasive than Google reCAPTCHA.
+
+---
+
 # ReCaptcha
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/laragear/recaptcha.svg)](https://packagist.org/packages/laragear/recaptcha)
 [![Latest stable test run](https://github.com/Laragear/ReCaptcha/workflows/Tests/badge.svg)](https://github.com/Laragear/ReCaptcha/actions)
