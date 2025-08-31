@@ -17,7 +17,7 @@ trait CreatesFulfilledResponse
     protected function fulfilledResponse(
         array $properties = ['success' => true],
         string $input = ReCaptcha::INPUT,
-        string $action = null,
+        ?string $action = null,
     ): ReCaptchaResponse {
         return new ReCaptchaResponse(
             $this->fulfilledPromise($properties),
