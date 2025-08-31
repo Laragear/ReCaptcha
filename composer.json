@@ -13,6 +13,7 @@
         "http2",
         "http3"
     ],
+    "abandoned": "laragear/turnstile",
     "authors": [
         {
             "name": "Italo Israel Baeza Cabrera",
